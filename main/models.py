@@ -7,3 +7,9 @@ class Search_result(models.Model):
     heart=models.ImageField(blank=True)
     created_at=models.DateField(auto_now_add= True)
     updated_at = models.DateField(auto_now = True)
+
+
+
+
+
+    
