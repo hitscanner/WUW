@@ -13,7 +13,6 @@ class Search(models.Model):
 
 class Calendar(models.Model):
     
-dfdsf
 class Icon(models.Model):
     icon=models.ImageField(blank=True)
 
