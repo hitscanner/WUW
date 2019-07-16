@@ -7,17 +7,3 @@ class Search_result(models.Model):
     heart=models.ImageField(blank=True)
     created_at=models.DateField(auto_now_add= True)
     updated_at = models.DateField(auto_now = True)
-
-class Search(models.Model):
-    text=models.TextField()
-
-class Calendar(models.Model):
-    
-class Icon(models.Model):
-    icon=models.ImageField(blank=True)
-
-
-
-
-
-    
