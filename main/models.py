@@ -11,6 +11,6 @@ class Search_result(models.Model):
     created_at=models.DateField(auto_now_add= True)
     updated_at = models.DateField(auto_now = True)
 
-class calendar(models.Model):
+# class calendar(models.Model):
 
-class joahyo(models.Model):
+# class joahyo(models.Model):
