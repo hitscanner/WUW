@@ -56,7 +56,7 @@ ROOT_URLCONF = 'WUW.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['WUW/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
