@@ -9,8 +9,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
 <div class="container">
-    <div align="right">
+    <div align="right" style="float:right;">
         <button>신작</button>
         {% if user.is_authenticated %}
         <p>환영합니다 {{user.username}}님</p>
