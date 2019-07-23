@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head>
+    <!-- {% load staticfiles %}  이거 왜 없어도 작동이 되는거지???? -->
+    <meta charset='utf-8' />
+
+    <link href='/WUW/fullcalendar/static/core/main.css' rel='stylesheet' />
+    <link href='/WUW/fullcalendar/static/daygrid/main.js' rel='stylesheet' />
+
+    <script src='/WUW/fullcalendar/static/core/main.js'></script>
+    <script src='/WUW/fullcalendar/static/daygrid/main.js'></script>
+
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [ 'dayGrid' ]
+        });
+
+        calendar.render();
+      });
+
+    </script>
+  </head>
+  <body>
+
+    <div id='calendar'></div>
+
+  </body>
+</html>
