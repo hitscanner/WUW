@@ -1,9 +1,10 @@
 {%extends 'base.html'%}
 <!DOCTYPE html>
 
-{%block content%}
+
 <html>
   <head>
+      {%block title%}
     <style>
         .sticky-social-bar {
             padding: 0;
@@ -73,8 +74,10 @@
             background-color: inherit;
           }
     </style>
+    {%endblock%}
   </head>
   <body>
+    {%block content%}
     <div style="clear: both">
       <br>
       <h1 style="margin-left: 4rem">로고</h1>
@@ -101,7 +104,7 @@
 
       </div>
     </div>
-</body>
+    {%endblock%}
+  </body>
 
 </html>
-{%endblock%}
