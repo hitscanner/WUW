@@ -8,3 +8,7 @@ def index(request):
 def search(request):
 
     return render(request,'search.html')
+
+def shoppingbag(request):
+
+    return render(request, 'shoppingbag.html')
