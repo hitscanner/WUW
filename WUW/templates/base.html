@@ -1,28 +1,5 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        {%block title%}
-        {%endblock%}
-    </head>
-    <body>
-        <div class="container">
-            <div align="right" style="float:right;">
-                <button>신작</button>
-                {% if user.is_authenticated %}
-                <p>환영합니다 {{user.username}}님</p>
-                <form action="{%url 'logout'%}" method="POST">
-                    {%csrf_token%}
-                    <input type="submit" value="로그아웃">
-                </form>
-                {% else %}
-                <div style="clear:both; float:right;">
-                <button><a href="{%url 'signup'%}">회원가입</a></button>
-                <button><a href="{%url 'login'%}">로그인</a></button>
-                </div>
-                {% endif %}
-            </div>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +17,6 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     {% load staticfiles %}
-
 </head>
 
 <body>
