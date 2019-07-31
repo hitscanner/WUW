@@ -1,5 +1,6 @@
 {%extends 'base.html'%}
 {%block content%}
+<<<<<<< HEAD
 
 <body>
     <style>
@@ -254,6 +255,13 @@
       
 
 <!-- <form action="{%url 'login'%}" method="post">
+=======
+
+<center style="margin-top:5em">
+
+    <h1>Login</h1>
+    <form action="{%url 'login'%}" method="post">
+>>>>>>> 811289e259ad5bedc86db87e8cbda65e0d8b1d3c
         {%csrf_token%}
         Username:
         <br>
@@ -271,5 +279,11 @@
     
     {% if error %}
         {{ error }}<br><br>
+<<<<<<< HEAD
     {% endif %} -->
     {%endblock%}
+=======
+    {% endif %}
+</center>
+{%endblock%}
+>>>>>>> 811289e259ad5bedc86db87e8cbda65e0d8b1d3c
