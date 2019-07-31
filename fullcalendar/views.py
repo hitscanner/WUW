@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+def fullcalendar(request):
+
+    return render(request, 'fullcalendar.html')

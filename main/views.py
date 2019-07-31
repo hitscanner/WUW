@@ -12,3 +12,4 @@ def search(request):
 def shoppingbag(request):
 
     return render(request, 'shoppingbag.html')
+

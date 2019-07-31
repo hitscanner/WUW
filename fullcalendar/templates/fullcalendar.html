@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang='ko'>
-
 <head>
-    <!-- {% load staticfiles %}  이거 왜 없어도 작동이 되는거지???? -->
+    {% load staticfiles %}
     <meta charset='utf-8' />
 
-    <link href='/WUW/fullcalendar/static/core/main.css' rel='stylesheet' />
-    <link href='/WUW/fullcalendar/static/daygrid/main.js' rel='stylesheet' />
+    <link href='{%static "daygrid/main.js"%}' rel='stylesheet' />
+    <link href='{%static "core/main.css"%}' rel='stylesheet' />
+    <script src='{%static "core/main.js"%}'></script>
+    <script src='{%static "daygrid/main.js"%}'></script>
+
   </head>
   <body>
-
     <div id='calendar'></div>
-   
-
-    <script src='/WUW/fullcalendar/static/core/main.js'></script>
-    <script src='/WUW/fullcalendar/static/daygrid/main.js'></script>
-
     <script>
-
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
 

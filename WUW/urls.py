@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 import main.views
 import accounts.views
+import fullcalendar.views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,4 +29,5 @@ urlpatterns = [
     path('logout/', accounts.views.logout, name='logout'),
     path('search/',main.views.search,name='search'),
     path('shoppingbag/', main.views.shoppingbag, name='shoppingbag'),
+    path('fullcalendar/',fullcalendar.views.fullcalendar,name='fullcalendar'),
 ]
