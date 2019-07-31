@@ -1,10 +1,7 @@
 {%extends 'base.html'%}
 {%block content%}
 
-<center style="margin-top:5em">
-    <h1>회원가입</h1>
-
-    <form action="{%url 'signup'%}" method="POST">
+    <!-- <form action="{%url 'signup'%}" method="POST">
         {%csrf_token%}
 
         username<br>
@@ -16,7 +13,64 @@
         PASSWORD 확인<br>
         <input type="password" name="password2"><br>
         <input type="submit" name="회원가입">
-    </form>
-</center>
+    </form> -->
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+<form action="{%url 'signup'%}" method="POST">
+  <div class="form-icons">
+    <h1>회원가입</h1>
+
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <input class="input-group-field" type="text" placeholder="Full name" name="username">
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <input class="input-group-field" type="text" placeholder="Nickname" name="nickname">
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-key"></i>
+      </span>
+      <input class="input-group-field" type="text" placeholder="Password">
+    </div>
+  </div>
+  <button class="button expanded">Sign Up</button>
+</form>
+
+
+<body>
+    <style>
+        
+form .form-icons {
+  text-align: center;
+}
+
+form .form-icons h4 {
+  margin-bottom: 1rem;
+}
+
+form .form-icons .input-group-label {
+  background-color: #1779ba;
+  border-color: #1779ba;
+}
+
+form .form-icons .input-group-field {
+  border-color: #1779ba;
+}
+
+form .form-icons .fa {
+  color: white;
+  width: 1rem;
+}
+    </style>
+</body>
 
 {%endblock%}
