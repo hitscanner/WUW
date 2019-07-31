@@ -30,67 +30,61 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <a class="nav-item active">
-                    <a class="nav-link" onclick="showPopup();">신작</a>
-                </li>
-                {% if user.is_authenticated %}
+                {%if user.is_authenticated%}
                 <li class="nav-item ">
-                    <form style="display: inline;" action="{%url 'logout'%}" method="POST">
+                    <form id="signout" style="display: inline;" action="{%url 'logout'%}" method="POST">
                         {%csrf_token%}
-                        <input type="submit" value="로그아웃">
+                        <a class="nav-link" href="javascript:void(0)" onclick="signout()" data-display="static">
+                                로그아웃
+                        </a>
                     </form>
                 </li>
                 {% else %}
-                <li class="nav-item ">
-                    <a class="nav-link" href="{%url 'signup'%}">회원가입</a>
-                </li>
-
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle " data-toggle="dropdown" data-display="static">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" data-display="static">
                         회원가입
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg-right" style="padding:1em;">
-                        <form>
+                            <form action="{%url 'signup'%}" method="POST">
+                            {%csrf_token%}
                             <div class="form-group">
-                                <input type="Username" class="form-control" id="exampleInputEmail1"
+                                <input type="text" class="form-control" id="exampleInputEmail1" name="username"
                                     aria-describedby="emailHelp" placeholder="Username" size='50'>
-                            </div>
+                            </div> 
                             <div class="form-group">
-                                <input type="Nickname" class="form-control" id="exampleInputPassword1"
-                                    placeholder="Nickname">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputEmail1"
+                                <input type="password" class="form-control" id="exampleInputEmail1" name="password"
                                     aria-describedby="emailHelp" placeholder="Password" size='50'>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputEmail1"
+                                <input type="password" class="form-control" id="exampleInputEmail1" name="password2"
                                     aria-describedby="emailHelp" placeholder="Password_Check" size='50'>
                             </div>
                             <button type="submit" class="btn btn-primary">회원가입</button>
                         </form>
                     </div>
                 </li>
-
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle " data-toggle="dropdown" data-display="static">
-                        로그인!
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" data-display="static">
+                        로그인
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg-right" style="padding:1em;">
-                        <form>
+                        <form action="{%url 'login'%}" method="post">
+                            {%csrf_token%}
                             <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Username" size='50'>
+                                <input type="text" class="form-control" id="exampleInputEmail1" name="username"
+                                    aria-describedby="emailHelp" placeholder="Username">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="password"
                                     placeholder="Password">
                             </div>
-                            <button type="submit" class="btn btn-primary">로그인</button>
+                            <input type="submit" class="btn btn-primary" value="로그인"></input>
                         </form>
                     </div>
                 </li>
                 {% endif %}
+                <a class="nav-link" onclick="showPopup();">신작</a>
+
             </ul>
         </div>
     </nav>
@@ -195,7 +189,11 @@
             background-color: inherit;
         }
     </style>
-
+    <script>
+    function signout(){
+        document.getElementById("signout").submit();
+    }
+    </script>
 
     <script language="javascript">
         function showPopup() { window.open("{%url 'fullcalendar'%}", "a", "width=400, height=300, left=100, top=50"); }
