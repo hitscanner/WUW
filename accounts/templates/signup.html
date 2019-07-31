@@ -1,70 +1,83 @@
 {%extends 'base.html'%}
 {%block content%}
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-
 <body>
     <style>
-            
-    form .form-icons {
-      text-align: center;
-    }
-    
-    form .form-icons h4 {
-      margin-bottom: 1rem;
-    }
-    
-    form .form-icons .input-group-label {
-      background-color: #ffffffd7;
-      border-color: #ffffff;
-    }
-    
-    form .form-icons .input-group-field {
-      border-color: #ffffff;
-    }
-    
-    form .form-icons .fa {
-      color: rgb(0, 0, 0);
-      width: 1rem;
-    }
+.translucent-form-overlay {
+  max-width: 500px;
+  width: 100%;
+  background-color: rgba(54, 54, 54, 0.8);
+  padding: 20px;
+  color: #fefefe;
+}
+
+.translucent-form-overlay .columns.row {
+  display: block;
+}
+
+.translucent-form-overlay h3, .translucent-form-overlay label {
+  color: #fefefe;
+}
+
+.translucent-form-overlay input, .translucent-form-overlay select {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::-webkit-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input:-ms-input-placeholder {
+  color: #8a8a8a;
+}
+
+.translucent-form-overlay input::placeholder {
+  color: #8a8a8a;
+}
         </style>
     </body>
 
 <div align="center">
-
+<br>
+<br>
+<br>
+<br>
 <form action="{%url 'signup'%}" method="POST">
 {%csrf_token%}
 
-  <div class="form-icons">
-    <div class="input-group">
-      <span class="input-group-label">
-        <i class="fa fa-user"></i>
-      </span>
-      <input class="input-group-field" type="text" placeholder="Username" name="username">
-    </div>
+<div class="translucent-form-overlay">
+        <form>
+          <h3>Sign Up</h3>
 
-    <div class="input-group">
-      <span class="input-group-label">
-        <i class="fa fa-envelope"></i>
-      </span>
-      <input class="input-group-field" type="text" placeholder="Nickname" name="nickname">
-    </div>
+          <div class="row columns">
+            <label>Username
+              <input type="text" name="username" placeholder=" Username">
+            </label>
+            </div>
 
-    <div class="input-group">
-      <span class="input-group-label">
-        <i class="fa fa-key"></i>
-      </span>
-      <input class="input-group-field" type="password" placeholder="Password" name="password">
-    </div>
+          <div class="row columns">
+            <label>Nickname
+              <input type="text" placeholder=" Nickname" name="nickname">
+            </label>
+            </div>
 
-    <div class="input-group">
-            <span class="input-group-label">
-              <i class="fa fa-key"></i>
-            </span>
-            <input class="input-group-field" type="password" placeholder="Confirm Password" name="password2">
-          </div>
-    </div>
-    <input type="submit" name="회원가입">
+          <div class="row columns">
+                <label>Password
+                  <input type="text" placeholder=" Password" name="password">
+                </label>
+            </div>
+
+        <div class="row columns">
+            <label>Password 확인
+                <input type="text" placeholder=" Confirm Password" name="password2">
+            </label>
+            </div>
+            
+          <button type="button" class="primary button expanded search-button">
+            Search
+          </button>
+       </form>
+      </div>      
 </form>
 
 </div>
