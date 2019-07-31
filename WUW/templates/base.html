@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{%url 'fullcalendar'%}">신작</a>
+                    <input class="nav-link" type="button" value="신작" onclick="showPopup();" />
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item ">
@@ -162,6 +162,11 @@
             background-color: inherit;
         }
     </style>
+
+
+    <script language="javascript">
+        function showPopup() { window.open("{%url 'fullcalendar'%}", "a", "width=400, height=300, left=100, top=50"); }
+    </script>
 </body>
 
 </html>
