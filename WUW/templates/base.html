@@ -50,22 +50,23 @@
                         회원가입
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg-right" style="padding:1em;">
-                        <form>
+                        <form action="{%url 'signup'%}" method="post">
+                        {%csrf_token%}
                             <div class="form-group">
                                 <input type="Username" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Username" size='50'>
+                                    aria-describedby="emailHelp" placeholder="Username" size='50' name="username">
                             </div>
                             <div class="form-group">
                                 <input type="Nickname" class="form-control" id="exampleInputPassword1"
-                                    placeholder="Nickname">
+                                    placeholder="Nickname" name="nickname">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Password" size='50'>
+                                    aria-describedby="emailHelp" placeholder="Password" size='50' name = "password">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Password_Check" size='50'>
+                                <input type="password2" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Password_Check" size='50' name = "password2">
                             </div>
                             <button type="submit" class="btn btn-primary">회원가입</button>
                         </form>
@@ -74,17 +75,18 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " data-toggle="dropdown" data-display="static">
-                        로그인!
+                        로그인
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg-right" style="padding:1em;">
-                        <form>
+                        <form action="{%url 'login'%}" method="post">
+                        {%csrf_token%}
                             <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Username" size='50'>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    placeholder="Username" size='50' name="username" value="">
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" id="exampleInputPassword1"
-                                    placeholder="Password">
+                                    placeholder="Password" name="password" value="">
                             </div>
                             <button type="submit" class="btn btn-primary">로그인</button>
                         </form>
