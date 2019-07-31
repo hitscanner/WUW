@@ -1,12 +1,15 @@
 {%extends 'base.html'%}
 {%block content%}
-<center style="margin-top:11em">
+<center style="margin-top:5em">
     <h1>로고</h1>
     <br>
     <form action="{%url 'search'%}">
-        <input type="text" name="search" placeholder="Search.." autocomplete="off" size="100"
-            style="padding: 0.75rem 1.25rem 0.75rem 2rem;">
-        <input type="submit" value="검색" style="padding: 0.75rem 1.25rem 0.75rem;">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+            </div>
+        </div>
     </form>
 </center>
 <div align="center">
@@ -14,5 +17,18 @@
     <button>인기순위</button>
     <button>장르</button>
     <button>랜덤</button>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+    </div>
 </div>
 {%endblock%}
