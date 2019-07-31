@@ -1,7 +1,9 @@
-<h1>Login</h1>
+{%extends 'base.html'%}
+{%block content%}
 
+<center style="margin-top:5em">
 
-<body>
+    <h1>Login</h1>
     <form action="{%url 'login'%}" method="post">
         {%csrf_token%}
         Username:
@@ -21,4 +23,5 @@
     {% if error %}
         {{ error }}<br><br>
     {% endif %}
-</body>
+</center>
+{%endblock%}

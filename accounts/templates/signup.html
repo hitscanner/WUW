@@ -1,6 +1,9 @@
-<h1>회원가입</h1>
+{%extends 'base.html'%}
+{%block content%}
 
-<body>
+<center style="margin-top:5em">
+    <h1>회원가입</h1>
+
     <form action="{%url 'signup'%}" method="POST">
         {%csrf_token%}
 
@@ -14,4 +17,6 @@
         <input type="password" name="password2"><br>
         <input type="submit" name="회원가입">
     </form>
-</body>
+</center>
+
+{%endblock%}
