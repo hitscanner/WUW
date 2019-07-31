@@ -1,5 +1,7 @@
 {%extends 'base.html'%}
 {%block content%}
+{% load staticfiles %}
+
 <center style="margin-top:5em">
     <h1>로고</h1>
     <br>
@@ -18,17 +20,23 @@
     <button>장르</button>
     <button>랜덤</button>
 </div>
-<div class="container">
-    <div class="row">
+<div class="container mt-5 mb-5">
+    <div class="row" align="center">
         <div class="col">
-            One of three columns
+            <img class="poster" src="{%static 'poster/exit.jpg'%}">
         </div>
         <div class="col">
-            One of three columns
+            <img class="poster" src="{%static 'poster/사자.jpg'%}">
         </div>
         <div class="col">
-            One of three columns
+            <img class="poster" src="{%static 'poster/mypet.jpg'%}">
         </div>
     </div>
 </div>
+<style>
+    .poster{
+        width: 250px;
+        height: 350px;
+    }
+</style>
 {%endblock%}
