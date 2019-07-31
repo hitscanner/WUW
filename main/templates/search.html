@@ -1,6 +1,8 @@
 {%extends 'base.html'%}
 {%block title%}
+
 {%endblock%}
+
 {%block content%}
 {% load staticfiles %}
 <div style="clear: both">
@@ -15,7 +17,7 @@
     <a href="{%url 'index'%}"><input type="submit" value="검색" style="padding: 0.75rem 1.25rem 0.75rem;"></a>
   </div>
   <div align="right">
-    <u  l class="sticky-social-bar">
+    <ul class="sticky-social-bar">
       <li class="social-icon">
         <a href="#">
           <img src="{%static 'b.png' %}" alt="장바구니이미지" class="fa fa-basket" aria-hidden="true" sizes=""></img>
