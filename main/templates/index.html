@@ -3,7 +3,7 @@
 {% load staticfiles %}
 
 <center style="margin-top:5em">
-    <h1>로고</h1>
+    <h1 class="logo">왓츄원</h1>
     <br>
     <form action="{%url 'search'%}">
         <div class="input-group mb-3">
@@ -37,6 +37,10 @@
     .poster{
         width: 250px;
         height: 350px;
+    }
+    @font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff'); } 
+    .logo{
+        font-family: 'LotteMartHappy', sans-serif;
     }
 </style>
 {%endblock%}
