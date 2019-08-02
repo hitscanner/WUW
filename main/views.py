@@ -1,16 +1,23 @@
 from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
+from .models import Movie
 
 # Create your views here.
 def index(request):
-    
+    movie = Movie.objects.all()
+    context={
+        "movie":movie,
+    }
 
-    return render(request,'index.html')
+    return render(request,'index.html',context)
 
-def search(request):
-
-    return render(request,'search.html')
+def search(request,movie_name):
+    movie = Movie.objects.get(name = movie_name)
+    context={
+        "movie":movie,
+    }
+    return render(request,'search.html',context)
 
 def tag(request):
 

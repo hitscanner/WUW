@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main',
     'accounts',
     'fullcalendar',
+    'import_export',
 ]
 
 MIDDLEWARE = [

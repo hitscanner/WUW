@@ -5,11 +5,11 @@
 <center style="margin-top:5em">
     <h1 class="logo">왓츄원</h1>
     <br>
-    <form action="{%url 'search'%}">
+    <form action="">
         <div class="input-group mb-3">
             <input type="text" class="form-control" aria-describedby="button-addon2">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+                <input type='submit' class="btn btn-outline-secondary" type="button" id="button-addon2"></input>
             </div>
         </div>
     </form>
@@ -21,6 +21,16 @@
     <button>랜덤</button>
 </div>
 <div class="container mt-5 mb-5">
+        <div class="row" align="center">
+            {%for m in movie%}
+            <div class="col mb-3">
+                <a href ="{%url 'search' m.name%}"><img class="poster" src="{{m.poster}}"> </a>
+                <br>
+            </div>
+            {%endfor%}
+        </div>
+    </div> 
+<!-- <div class="container mt-5 mb-5">
     <div class="row" align="center">
         <div class="col">
             <img class="poster" src="{%static 'poster/exit.jpg'%}">
@@ -32,8 +42,7 @@
             <img class="poster" src="{%static 'poster/mypet.jpg'%}">
         </div>
     </div>
-</div>
-
+</div>  -->
 <style>
     .poster{
         width: 250px;

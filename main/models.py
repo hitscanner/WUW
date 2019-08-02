@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create y models here.
-class Search_result(models.Model):
+class Movie(models.Model):
     name=models.CharField(max_length=100)
     poster=models.TextField(blank=True)
     # like=models.ManyToManyField(User)
@@ -19,7 +19,7 @@ class Search_result(models.Model):
     horror=models.BooleanField(default=False)
     animation=models.BooleanField(default=False)
 
-    created_at=models.DateField(auto_now_add= True)
-    updated_at = models.DateField(auto_now = True)
+    created_at=models.DateTimeField(auto_now_add= True)
+    updated_at = models.DateTimeField(auto_now = True)
 
 # class calendar(models.Model):

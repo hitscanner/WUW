@@ -1,9 +1,13 @@
 from django.contrib import admin
-from models import Search_result
+from .models import Movie
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
-# ... export functions will go here ...
+class MovieResource(resources.ModelResource):
+    class Meta:
+        model = Movie
 
-class Search_resultAdmin(admin.ModelAdmin):
-    actions = [export_csv, export_xls, export_xlsx]
+class MovieAdmin(ImportExportModelAdmin):
+    resource_class = MovieResource
 
-admin.site.register(Search_result, Search_resultAdmin)
+admin.site.register(Movie, MovieAdmin)
