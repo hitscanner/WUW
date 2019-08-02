@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang='ko'>
-<head>
+<html lang='en'>
+  <head>
     {% load staticfiles %}
     <meta charset='utf-8' />
-
-    <link href='{%static "daygrid/main.js"%}' rel='stylesheet' />
+    <link href='{%static "daygrid/main.css"%}' rel='stylesheet' />
     <link href='{%static "core/main.css"%}' rel='stylesheet' />
     <script src='{%static "core/main.js"%}'></script>
     <script src='{%static "daygrid/main.js"%}'></script>
@@ -12,16 +11,48 @@
   </head>
   <body>
     <div id='calendar'></div>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: [ 'dayGrid' ]
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+        
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: [ 'dayGrid' ],
+            eventClick: function(info) {
+              var eventObj = info.event;
+        
+              if (eventObj.url) {
+                alert(
+                  'Clicked ' + eventObj.title + '.\n' +
+                  'Will open ' + eventObj.url + ' in a new tab'
+                );
+        
+                window.open(eventObj.url);
+        
+                info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
+              } else {
+                alert('Clicked ' + eventObj.title);
+              }
+            },
+            defaultDate: '2019-08-15',
+            events: [
+              {
+                title: 'simple event',
+                start: '2019-08-02'
+              },
+              {
+                title: 'event with URL',
+                url: 'https://www.google.com/',
+                start: '2019-08-03'
+              }
+            ]
+          });
+        
+          calendar.render();
         });
 
-        calendar.render();
-      });
+
 
     </script>
   </body>

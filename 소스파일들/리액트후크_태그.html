@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+
+        <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+        <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+        <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+        <script src="https://fonts.googleapis.com/icon?family=Material+Icons"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.4/umd/react.production.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.4/umd/react-dom.production.min.js"></script>
+
+
+    </head>
+    <body>
+        <div id="root">
+            <div class="App">
+                <div class="tags-input">
+                    <ul>
+
+                    </ul>
+                    <input type="text" placeholder="태그를 추가하려면 엔터를 누르세요">
+                    
+                </div>
+            </div>
+
+        </div>
+
+
+        <style id="rendered-js">
+                    
+            @import url("https://fonts.googleapis.com/css?family=Overpass");
+            * {
+            box-sizing: border-box;
+            font-family: "Overpass", sans-serif;
+            }
+            
+            body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Overpass", sans-serif;
+            }
+            
+            .tags-input {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            min-height: 48px;
+            width: 480px;
+            padding: 0 8px;
+            border: 1px solid #d6d8da;
+            border-radius: 6px;
+            }
+            .tags-input:focus-within {
+            border: 1px solid #0052cc;
+            }
+            .tags-input ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 8px 0 0 0;
+            }
+            .tags-input ul li {
+            width: auto;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 0 8px;
+            font-size: 14px;
+            list-style: none;
+            border-radius: 6px;
+            margin: 0 8px 8px 0;
+            background: #0052cc;
+            }
+            .tags-input ul li span {
+            margin-top: 3px;
+            }
+            .tags-input ul li i {
+            font-size: 14px;
+            margin-left: 8px;
+            color: #0052cc;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            }
+            .tags-input input {
+            border: none;
+            height: 46px;
+            font-size: 14px;
+            padding: 4px 0 0 0;
+            }
+            .tags-input input:focus {
+            outline: transparent;
+            }
+            
+            @media screen and (max-width: 567px) {
+            .tags-input {
+                width: calc(100vw - 32px);
+            }
+            }
+            
+            
+        </style>
+
+        <script>
+                window.console = window.console || function(t) {};
+        </script>
+
+        <script>
+            
+            if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+            }
+        </script>
+
+        <script id="rendered-js">
+                    
+            const TagsInput = props => {
+                const [tags, setTags] = React.useState(["NodeJs", "MongoDB"]);
+                const removeTags = indexToRemove => {
+                setTags([...tags.filter((_, index) => index !== indexToRemove)]);
+                };
+                const addTags = event => {
+                if (event.target.value !== "") {
+                    setTags([...tags, event.target.value]);
+                    props.selectedTags([...tags, event.target.value]);
+                    event.target.value = "";
+                }
+                };
+                return (
+                React.createElement("div", { className: "tags-input" },
+                React.createElement("ul", null,
+                tags.map((tag, index) =>
+                React.createElement("li", { key: index },
+                React.createElement("span", null, tag),
+                React.createElement("i", {
+                    className: "material-icons",
+                    onClick: () => removeTags(index) }, "close")))),
+            
+            
+            
+            
+            
+            
+                React.createElement("input", {
+                    type: "text",
+                    onKeyUp: event => event.key === "Enter" ? addTags(event) : null,
+                    placeholder: "Press enter to add tags" })));
+            
+            
+            
+            };
+            
+            const App = () => {
+                const selectedTags = tags => {
+                console.log(tags);
+                };
+                return (
+                React.createElement("div", { className: "App" },
+                React.createElement(TagsInput, { selectedTags: selectedTags })));
+            
+            
+            };
+            
+            ReactDOM.render(React.createElement(App, null), document.getElementById("root"));
+        </script>
+<!-- 
+        <script id="rendered-js">
+
+            const TagsInput = props => {
+                const [tags, setTags] = React.useState(["NodeJs", "MongoDB"]);
+                const removeTags = indexToRemove => {
+                    setTags([...tags.filter((_, index) => index !== indexToRemove)]);
+                };
+                const addTags = event => {
+                    if (event.target.value !== "") {
+                        setTags([...tags, event.target.value]);
+                        props.selectedTags([...tags, event.target.value]);
+                        event.target.value = "";
+                    }
+                };
+                return (
+                    <div className="tags-input">
+                        <ul>
+                            {tags.map((tag, index) => (
+                                <li key={index}>
+                                    <span>{tag}</span>
+                                    <i
+                                        className="material-icons"
+                                        onClick={() => removeTags(index)}
+                                    >
+                                        close
+                                    </i>
+                                </li>
+                            ))}
+                        </ul>
+                        <input
+                            type="text"
+                            onKeyUp={event => event.key === "Enter" ? addTags(event) : null}
+                            placeholder="Press enter to add tags"
+                        />
+                    </div>
+                );
+            };
+            
+            const App = () => {
+                const selectedTags = tags => {
+                    console.log(tags);
+                };
+                return (
+                    <div className="App">
+                        <TagsInput selectedTags={selectedTags} />
+                    </div>
+                );
+            };
+            
+            ReactDOM.render(<App />, document.getElementById("root"));
+        </script> -->
+        
+    </body>
+</html>

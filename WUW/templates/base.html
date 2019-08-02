@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +22,7 @@
 <body>
     {% load staticfiles %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="{%url 'index'%}">Home</a>
+        <a class="navbar-brand" href="{%url 'index'%}">왓츄원</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -83,8 +82,7 @@
                     </div>
                 </li>
                 {% endif %}
-                <a class="nav-link" onclick="showPopup();">신작</a>
-
+                <a class="nav-link" href="javascript:void(0)" onclick="showPopup();">신작</a>
             </ul>
         </div>
     </nav>
@@ -196,7 +194,7 @@
     </script>
 
     <script language="javascript">
-        function showPopup() { window.open("{%url 'fullcalendar'%}", "a", "width=400, height=300, left=100, top=50"); }
+        function showPopup() { window.open("{%url 'fullcalendar'%}", "a", "width=600, height=530, left=100, top=50"); }
     </script>
 </body>
 
