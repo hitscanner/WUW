@@ -2,7 +2,19 @@
 {%block content%}
     <div class='containger'> 
         <br>
-        <h1>Ranking</h1>
+        
+        <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-5">
+                    <span style="font-size: 4rem; color:black;">Ranking</span>
+                </div>
+                <div class="col" align="center" style="margin-top: 3.8rem">
+                    <small >출처 : 네이버</small>
+                </div>
+            </div>
+            </div>
+        <br>
         <br>
         <div class="container">
             <div class="row">
@@ -10,18 +22,31 @@
                     <h5> 조회순 </h5>
                     <br>
                     {%for ranking1 in Movie_ranking1 %}
-                    <p> {{forloop.counter}}위 : {{ranking1}}</p>
+                    <p> {{ranking1}}</p>
                     {%endfor%}
                 </div>
                 <div class="col">
                     <h5> 평점순 </h5>
                     <br>
                     {%for ranking2 in Movie_ranking2 %}
-                    <p> {{forloop.counter}}위 : {{ranking2}}</p>
+                    <p>  {{ranking2}}</p>
                     {%endfor%}
                 </div>
         </div>
         
     </div>
+
+    <style>
+        .col{
+            text-align: center;
+        }
+        .col-5{
+            text-align:center;
+        }
+        h5{
+            font-weight : bold;
+        }
+    </style>
     
 {%endblock%}
+<!-- {{forloop.counter}}위 : -->
