@@ -30,5 +30,6 @@ urlpatterns = [
     path('search/',main.views.search,name='search'),
     path('shoppingbag/', main.views.shoppingbag, name='shoppingbag'),
     path('ranking/', main.views.ranking, name='ranking'),
+    path('tag/', main.views.tag, name='tag'),
     path('fullcalendar/',fullcalendar.views.fullcalendar,name='fullcalendar'),
 ]
