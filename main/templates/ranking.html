@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{%block content%}
+    <div class='containger'> 
+        <br>
+        <h1>Ranking</h1>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5> 조회순 </h5>
+                    <br>
+                    {%for ranking1 in Movie_ranking1 %}
+                    <p> {{forloop.counter}}위 : {{ranking1}}</p>
+                    {%endfor%}
+                </div>
+                <div class="col">
+                    <h5> 평점순</h5>
+                    <br>
+                    {%for ranking2 in Movie_ranking2 %}
+                    <p> {{forloop.counter}}위 : {{ranking2}}</p>
+                    {%endfor%}
+                </div>
+        </div>
+        
+    </div>
+    
+{%endblock%}
