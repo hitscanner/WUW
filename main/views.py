@@ -12,6 +12,10 @@ def search(request):
 
     return render(request,'search.html')
 
+def tag(request):
+
+    return render(request,'tag.html')
+
 def shoppingbag(request):
 
     return render(request, 'shoppingbag.html')
