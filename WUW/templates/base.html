@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,22 +35,23 @@
                     <form id="signout" style="display: inline;" action="{%url 'logout'%}" method="POST">
                         {%csrf_token%}
                         <a class="nav-link" href="javascript:void(0)" onclick="signout()" data-display="static">
-                                로그아웃
+                            로그아웃
                         </a>
                     </form>
                 </li>
                 {% else %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" data-display="static">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                        data-display="static">
                         회원가입
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg-right" style="padding:1em;">
-                            <form action="{%url 'signup'%}" method="POST">
+                        <form action="{%url 'signup'%}" method="POST">
                             {%csrf_token%}
                             <div class="form-group">
                                 <input type="text" class="form-control" id="exampleInputEmail1" name="username"
                                     aria-describedby="emailHelp" placeholder="Username" size='50'>
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" id="exampleInputEmail1" name="password"
                                     aria-describedby="emailHelp" placeholder="Password" size='50'>
@@ -63,7 +65,8 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" data-display="static">
+                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                        data-display="static">
                         로그인
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg-right" style="padding:1em;">
@@ -103,6 +106,21 @@
         </ul>
     </div>
     <style>
+        @font-face {
+            font-family: 'S-CoreDream-3Light';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            font-family: 'WONDotum', sans-serif;
+        }
+
+        #logo {
+            font-family: 'S-CoreDream-3Light', sans-serif;
+        }
+        
+
         .sticky-social-bar {
             padding: 0;
             margin: 0;
@@ -187,27 +205,11 @@
             background-color: inherit;
         }
         
-        @font-face { 
-            font-family: 'S-CoreDream-3Light'; 
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); 
-            font-weight: normal; 
-            font-style: normal; 
-            font-family: 'WONDotum'; 
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/WONDotum.woff') format('woff'); 
-            font-weight: normal; 
-            font-style: normal; }
-        *{
-            font-family: 'WONDotum', sans-serif;
-            color: black;
-            }
-        #logo{
-            font-family: 'S-CoreDream-3Light', sans-serif;
-            }
     </style>
     <script>
-    function signout(){
-        document.getElementById("signout").submit();
-    }
+        function signout() {
+            document.getElementById("signout").submit();
+        }
     </script>
 
     <script language="javascript">

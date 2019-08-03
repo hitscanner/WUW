@@ -16,37 +16,39 @@
 </div>
 <div align="center">
     <button class="btn-1"><a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);">태그</a></button>
-    <button class="btn-1"><a href="{%url 'ranking'%}" style="text-decoration:none; color:rgb(70, 69, 69);">인기 순위</a></button>
-    <button class="btn-1"><a href="{%url 'random'%}" style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button>
+    <button class="btn-1"><a href="{%url 'ranking'%}" style="text-decoration:none; color:rgb(70, 69, 69);">인기
+            순위</a></button>
+    <button class="btn-1"><a href="{%url 'random'%}"
+            style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button>
     <!-- <button type="button" class="btn btn-outline-secondary"><a href="{%url 'random'%}">랜덤</a></button> -->
 </div>
 <div class="container mt-5 mb-5">
-        <div class="row" >
-            {%for m in movie%}
-            <div class="col-sm-12 col-md-4 mb-3">
-                <div class="card">
-                    {%if m.poster%}
-                    <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
-                    {%elif m.poster == ''%}
-                    <img src="https://aliceasmartialarts.com/wp-content/uploads/2017/04/default-image.jpg" class="card-img-top" alt="{{m.name}}">
-                    {%endif%}
-                    <div class="p-2 card-body">
-                        <div align="center">
+    <div class="row">
+        {%for m in movie%}
+        <div class="col-sm-12 col-md-4 mb-5">
+            <div class="card border-light" style="height:100%">
+                {%if m.poster%}
+                <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
+                {%elif m.poster == ''%}
+                <img src="{%static 'default_img.jpg'%}" class="card-img-top" alt="{{m.name}}" >
+                {%endif%}
+                <div class="p-2 card-body border-primary">
+                    <div align="center" style="height:2rem;">
                         {%if m.netflix == True%}
-                            <img class="mr-3" style="height:2rem; width:2rem;" src="{%static 'icon/netflix.png'%}">
+                        <img class="mr-3" style="height:100%;width:2rem;" src="{%static 'icon/netflix.png'%}">
                         {%endif%}
                         {%if m.watcha == True%}
-                            <img style="height:2rem; width:2rem;" class="img-fluid" src="{%static 'icon/watcha.png'%}">
+                        <img style="width:2rem;"src="{%static 'icon/watcha.png'%}">
                         {%endif%}
-                        </div>
-                        <a href="{%url 'detail' m.id%}" class="stretched-link"></a>
                     </div>
+                    <a href="{%url 'detail' m.id%}" class="stretched-link"></a>
                 </div>
             </div>
-            {%endfor%}
         </div>
-    </div> 
-    
+        {%endfor%}
+    </div>
+</div>
+
 <!-- <div class="container mt-5 mb-5">
     <div class="row" align="center">
         <div class="col">
@@ -61,52 +63,58 @@
     </div>
 </div>  -->
 <style>
-    .poster{
-        width: 250px;
-        height: 350px;
+    
+
+    @font-face {
+        font-family: 'LotteMartHappy';
+        font-style: normal;
+        font-weight: 400;
+        src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
     }
-    @font-face { font-family: 'LotteMartHappy'; font-style: normal; font-weight: 400; src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff'); } 
-    .logo{
+
+    .logo {
         font-family: 'LotteMartHappy', sans-serif;
     }
-button,button::after {
-  -webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-	transition: all 0.3s;
-}
 
-button {
-  background: none;
-  border: 3px solid rgb(255, 255, 255);
-  border-radius: 5px;
-  color: rgba(255, 187, 0, 0.849);
-  position: relative;
-  text-transform: uppercase;
-}
+    button,
+    button::after {
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+    }
 
-button::before,
-button::after {
-  background: rgba(255, 187, 0, 0.849);
-  content: '';
-  position: absolute;
-  z-index: -1;
-}
+    button {
+        background: none;
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 5px;
+        color: rgba(255, 187, 0, 0.849);
+        position: relative;
+        text-transform: uppercase;
+    }
 
-button:hover {
-  color: #000000;
-}
+    button::before,
+    button::after {
+        background: rgba(255, 187, 0, 0.849);
+        content: '';
+        position: absolute;
+        z-index: -1;
+    }
 
-/* BUTTON 1 */
-.btn-1::after {
-  height: 0;
-  left: 0;
-  top: 0;
-  width: 100%;
-}
+    button:hover {
+        color: #000000;
+    }
 
-.btn-1:hover:after {
-  height: 100%;
-}
+    /* BUTTON 1 */
+    .btn-1::after {
+        height: 0;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .btn-1:hover:after {
+        height: 100%;
+    }
 </style>
 {%endblock%}
