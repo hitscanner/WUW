@@ -15,7 +15,7 @@
     <div class="row" align="center">
     {%for m in movie%}
     <div class="col mb-3">
-        <a href ="{%url 'click' m.name%}"><img class="poster" src="{{m.poster}}"> <div>{{m.name}}</div></a>
+        <a href ="{%url 'detail' m.id%}"><img class="poster" src="{{m.poster}}"> <div>{{m.name}}</div></a>
         <br><br>
       </div>
     {%endfor%}
