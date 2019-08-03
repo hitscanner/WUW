@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User 
 # Create y models here.
 class Movie(models.Model):
     name=models.CharField(max_length=100)
@@ -21,4 +21,22 @@ class Movie(models.Model):
     created_at=models.DateTimeField(auto_now_add= True)
     updated_at = models.DateTimeField(auto_now = True)
 
+    like_user_set = models.ManyToManyField(User,
+                                        blank=True,
+                                        related_name='like_user_set',
+                                        through='Like')
+    def __str__(self):
+        return '%d - %s' % (self.id,self.name)   
+    
+    @property
+    def like_count(self):
+        return self.like_user_set.count()
+
+class Like(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    moive = models.ForeignKey(Movie,on_delete=models.CASCADE)
+    created_at = models.DateField(auto_now_add= True)
+
+    def __str__(self):
+        return '%s' % (self.moive.name)
 # class calendar(models.Model):

@@ -32,6 +32,7 @@ urlpatterns = [
     path('fullcalendar/',fullcalendar.views.fullcalendar,name='fullcalendar'),
     path('random/',main.views.random,name='random'),
     
+    path('like/',main.views.like,name='like'), 
     
     path('signup/', accounts.views.signup, name = 'signup'),
     path('login/', accounts.views.login, name = 'login'),
