@@ -14,8 +14,36 @@
         {%if movie.watcha == True%}
             <img style="height:2rem; width:2rem;" class="img-fluid" src="{%static 'icon/watcha.png'%}">
         {%endif%}
-        <br>
-        <br>
+        <br><br>
+        장르:
+        {%if movie.action == True%}
+            액션
+        {%endif%}
+        {%if movie.fantasy == True%}
+            판타지
+        {%endif%}
+        {%if movie.thriller == True%}
+            스릴러
+        {%endif%}
+        {%if movie.comedy == True%}
+            코미디
+        {%endif%}
+        {%if movie.romance == True%}
+            로맨스
+        {%endif%}
+        {%if movie.drama == True%}
+            드라마
+        {%endif%}
+        {%if movie.sf == True%}
+            SF
+        {%endif%}
+        {%if movie.horror == True%}
+            공포
+        {%endif%}
+        {%if movie.animation == True%}
+            애니메이션
+        {%endif%}
+        <br><br>
         <a href="https://www.google.com/search?source=hp&ei=62JFXa-dNJqC-Qa84Jz4DA&q={{movie.name}}&oq={{movie.name}}&gs_l=psy-ab.3..0i131j0l8j0i10.1140.2052..2184...0.0..0.123.791.2j7......0....1..gws-wiz.....0..0i131i10.7aCqYaRefPQ&ved=0ahUKEwjvvq2FwObjAhUaQd4KHTwwB88Q4dUDCAU&uact=5">구글 검색</a>
     </div>
 </div>
