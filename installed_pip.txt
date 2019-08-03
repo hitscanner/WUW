@@ -1,0 +1,7 @@
+ pip install -e git+https://github.com/django-import-export/django-import-export.git#egg=django-import-export
+ pip install django-import-export
+ pip install dj_database_url
+ pip install requests
+ pip install bs4
+ pip install whitenoise
+ pip install lxml

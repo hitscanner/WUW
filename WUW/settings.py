@@ -125,10 +125,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'fullcalendar', 'static'),
-    os.path.join(BASE_DIR, 'main', 'static'),
+    os.path.join(BASE_DIR, 'static'),
 ] 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
