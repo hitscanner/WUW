@@ -20,8 +20,14 @@ def click(request,movie_name):
     return render(request,'click.html',context)
 
 def search(request):
+    searcht=request.GET['search']
+    
+    movie=Movie.objects.filter(name__icontains=searcht)
 
-    return render(request, 'search.html')
+    context={
+        "movie":movie,
+    }
+    return render(request,'search.html',context)
 
 def tag(request):
 

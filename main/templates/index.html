@@ -7,18 +7,17 @@
     <br>
     <form action="{%url 'search'%}">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" aria-describedby="button-addon2">
+            <input type="text" name="search" class="form-control" aria-describedby="button-addon2" autocomplete="off">
             <div class="input-group-append">
-                <input type='submit' class="btn btn-outline-secondary" type="button" id="button-addon2"></input>
+                <input type='submit' value="검색" class="btn btn-outline-secondary" type="button" id="button-addon2">
             </div>
         </div>
     </form>
 </center>
 <div align="center">
-    <br>
-    <button><a href="{%url 'ranking'%}">인기 순위</a></button>
-    <button><a href="{%url 'tag'%}">태그</a></button>
-    <button><a href="{%url 'random'%}">랜덤</a></button>
+    <button type="button" class="btn btn-outline-secondary"><a href="{%url 'ranking'%}">인기 순위</a></button>
+    <button type="button" class="btn btn-outline-secondary"><a href="{%url 'tag'%}">태그</a></button>
+    <button type="button" class="btn btn-outline-secondary"><a href="{%url 'random'%}">랜덤</a></button>
 </div>
 <div class="container mt-5 mb-5">
         <div class="row" align="center">
