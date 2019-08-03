@@ -1,17 +1,19 @@
 {% extends 'base.html'%}
 {% block content%}
 {% load staticfiles %}
-<div style="clear: both">
+<div>
   <br>
-  <div align="center">
-      <br>
-      <input type="text" name="search" autocomplete="off" size="100"
-          style="padding: 0.75rem 1.25rem 0.75rem 2rem;">
-      <a href="{%url 'index'%}"><input type="submit" value="검색" style="padding: 0.75rem 1.25rem 0.75rem;"></a>
-  </div>
+  <form action="{%url 'search'%}">
+    <div class="input-group mb-3">
+        <input type="text" name="search" class="form-control" aria-describedby="button-addon2" autocomplete="off">
+        <div class="input-group-append">
+            <input type='submit' value="검색" class="btn btn-outline-secondary" type="button" id="button-addon2">
+        </div>
+    </div>
+</form>
 </div>
 
-<div class="container mt-5 mb-5">
+<!-- <div class="container mt-5 mb-5">
     <div class="row" align="center">
     {%for m in movie%}
     <div class="col mb-3">
@@ -20,6 +22,34 @@
       </div>
     {%endfor%}
     </div>
-</div>
+</div> -->
+
+<div class="container mt-5 mb-5">
+  <div class="row" >
+      {%for m in movie%}
+      <div class="col-sm-12 col-md-4 mb-3">
+          <div class="card">
+              {%if m.poster%}
+              <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
+              {%elif m.poster == ''%}
+              <img src="https://aliceasmartialarts.com/wp-content/uploads/2017/04/default-image.jpg" class="card-img-top" alt="{{m.name}}">
+              {%endif%}
+              <div align="center"> {{m.name}}</div>
+              <div class="p-2 card-body">
+                  <div align="center">
+                  {%if m.netflix == True%}
+                      <img class="mr-3" style="height:2rem;widhth:2rem;" src="{%static 'icon/netflix.png'%}">
+                  {%endif%}
+                  {%if m.watcha == True%}
+                      <img style="height:2rem;widhth:2rem;" class="img-fluid" src="{%static 'icon/watcha.png'%}">
+                  {%endif%}
+                  </div>
+                  <a href="{%url 'detail' m.id%}" class="stretched-link"></a>
+              </div>
+          </div>
+      </div>
+      {%endfor%}
+  </div>
+</div> 
 
 {%endblock%}
