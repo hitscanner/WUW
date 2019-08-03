@@ -15,9 +15,10 @@
     </form>
 </div>
 <div align="center">
-    <button type="button" class="btn btn-outline-secondary"><a href="{%url 'ranking'%}">인기 순위</a></button>
-    <button type="button" class="btn btn-outline-secondary"><a href="{%url 'tag'%}">태그</a></button>
-    <button type="button" class="btn btn-outline-secondary"><a href="{%url 'random'%}">랜덤</a></button>
+    <button class="btn-1"><a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);">태그</a></button>
+    <button class="btn-1"><a href="{%url 'ranking'%}" style="text-decoration:none; color:rgb(70, 69, 69);">인기 순위</a></button>
+    <button class="btn-1"><a href="{%url 'random'%}" style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button>
+    <!-- <button type="button" class="btn btn-outline-secondary"><a href="{%url 'random'%}">랜덤</a></button> -->
 </div>
 <div class="container mt-5 mb-5">
         <div class="row" >
@@ -68,5 +69,44 @@
     .logo{
         font-family: 'LotteMartHappy', sans-serif;
     }
+button,button::after {
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+button {
+  background: none;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  color: rgba(255, 187, 0, 0.849);
+  position: relative;
+  text-transform: uppercase;
+}
+
+button::before,
+button::after {
+  background: rgba(255, 187, 0, 0.849);
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+button:hover {
+  color: #000000;
+}
+
+/* BUTTON 1 */
+.btn-1::after {
+  height: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.btn-1:hover:after {
+  height: 100%;
+}
 </style>
 {%endblock%}
