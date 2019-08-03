@@ -3,13 +3,19 @@
 {% load staticfiles %}
 <br>
 <br>
-<img class="poster" src="{{movie.poster}}" style="width: 25rem"> 
-<div style="float:right; margin-right: 25rem; margin-top: 3rem;">
-    {{movie.name}}
+<img class="poster" src="{{movie.poster}}" style="width: 25rem; height: 35rem;"> 
+<div style="float:right; padding-left: 1rem">
+    <h1>{{movie.name}}</h1>
     <br>
-    {{movie.netflix}}
+    {%if movie.netflix == True%}
+        <img class="mr-3" style="height:2rem; width:2rem;" src="{%static 'icon/netflix.png'%}">
+    {%endif%}
+    {%if movie.watcha == True%}
+        <img style="height:2rem; width:2rem;" class="img-fluid" src="{%static 'icon/watcha.png'%}">
+    {%endif%}
     <br>
-    {{movie.watcha}}
+    <br>
+    <a href="https://www.google.com/search?source=hp&ei=62JFXa-dNJqC-Qa84Jz4DA&q={{movie.name}}&oq={{movie.name}}&gs_l=psy-ab.3..0i131j0l8j0i10.1140.2052..2184...0.0..0.123.791.2j7......0....1..gws-wiz.....0..0i131i10.7aCqYaRefPQ&ved=0ahUKEwjvvq2FwObjAhUaQd4KHTwwB88Q4dUDCAU&uact=5">구글 검색</a>
 </div>
 
 {%endblock%}
