@@ -1,8 +1,13 @@
 
-가상환경 꼬였을때, 다음 링크에서 파일받아 myvenv 폴더에 풀어주면 됨
+가상환경 꼬였을때,
+1. 다음 링크에서 파일받아 myvenv 폴더 만들고 풀어주면 됨
 https://filebin.net/7m9fbaklqulhwzmq
 
-파일에 설치된 것들
+2. 가상환경을 새로 생성 후 터미널에 다음 명령어 입력
+pip install -r requirements.txt
+
+
+requirements.txt 업데이트!
 
 astroid              2.2.5
 backports.csv        1.0.7
