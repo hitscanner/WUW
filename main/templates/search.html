@@ -13,17 +13,6 @@
 </form>
 </div>
 
-<!-- <div class="container mt-5 mb-5">
-    <div class="row" align="center">
-    {%for m in movie%}
-    <div class="col mb-3">
-        <a href ="{%url 'detail' m.id%}"><img class="poster" src="{{m.poster}}"> <div>{{m.name}}</div></a>
-        <br><br>
-      </div>
-    {%endfor%}
-    </div>
-</div> -->
-
 <div class="container mt-5 mb-5">
   <div class="row" >
       {%for m in movie%}
@@ -38,10 +27,10 @@
               <div class="p-2 card-body">
                   <div align="center">
                   {%if m.netflix == True%}
-                      <img class="mr-3" style="height:2rem;widhth:2rem;" src="{%static 'icon/netflix.png'%}">
+                      <img class="mr-3" style="height:2rem; width:2rem;" src="{%static 'icon/netflix.png'%}">
                   {%endif%}
                   {%if m.watcha == True%}
-                      <img style="height:2rem;widhth:2rem;" class="img-fluid" src="{%static 'icon/watcha.png'%}">
+                      <img style="height:2rem; width:2rem;" class="img-fluid" src="{%static 'icon/watcha.png'%}">
                   {%endif%}
                   </div>
                   <a href="{%url 'detail' m.id%}" class="stretched-link"></a>
