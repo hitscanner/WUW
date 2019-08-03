@@ -8,12 +8,15 @@ try:
     from django.utils import simplejson as json
 except ImportError:
     import json
+from django.core.paginator import Paginator
 
-# Create your views here.
 def index(request):
-    movie=Movie.objects.order_by('?')[:51]
+    movies=Movie.objects.order_by('?')[:51]
+    paginator = Paginator(movies,6) 
+    now_page = request.GET.get('page')
+    movies = paginator.get_page(now_page) 
     context={
-        "movie":movie,
+        "movies":movies,
     }
 
     return render(request,'index.html',context)
