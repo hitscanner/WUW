@@ -5,7 +5,7 @@
 <center style="margin-top:5em">
     <h1 class="logo">왓츄원</h1>
     <br>
-    <form action="">
+    <form action="{%url 'search'%}">
         <div class="input-group mb-3">
             <input type="text" class="form-control" aria-describedby="button-addon2">
             <div class="input-group-append">
@@ -18,13 +18,13 @@
     <br>
     <button><a href="{%url 'ranking'%}">인기 순위</a></button>
     <button><a href="{%url 'tag'%}">태그</a></button>
-    <button>랜덤</button>
+    <button><a href="{%url 'random'%}">랜덤</a></button>
 </div>
 <div class="container mt-5 mb-5">
         <div class="row" align="center">
             {%for m in movie%}
             <div class="col mb-3">
-                <a href ="{%url 'search' m.name%}"><img class="poster" src="{{m.poster}}"> </a>
+                <a href ="{%url 'click' m.name%}"><img class="poster" src="{{m.poster}}"> </a>
                 <br>
             </div>
             {%endfor%}

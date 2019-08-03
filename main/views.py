@@ -12,16 +12,26 @@ def index(request):
 
     return render(request,'index.html',context)
 
-def search(request,movie_name):
+def click(request,movie_name):
     movie = Movie.objects.get(name = movie_name)
     context={
         "movie":movie,
     }
-    return render(request,'search.html',context)
+    return render(request,'click.html',context)
+
+def search(request):
+
+    return render(request, 'search.html')
 
 def tag(request):
 
     return render(request,'tag.html')
+def random(request):
+    movie=Movie.objects.order_by('?')[0]
+    context={
+        "movie":movie,
+    }
+    return render(request,'random.html',context)
 
 def shoppingbag(request):
 

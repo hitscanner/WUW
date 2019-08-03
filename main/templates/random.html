@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% block content%}
+{% load staticfiles %}
+<br>
+<br>
+<img class="poster" src="{{movie.poster}}" style="width: 25rem"> 
+<div style="float:right; margin-right: 25rem; margin-top: 3rem;">
+    {{movie.name}}
+    <br>
+    {{movie.netflix}}
+    <br>
+    {{movie.watcha}}
+</div>
+
+{%endblock%}

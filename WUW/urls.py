@@ -27,9 +27,11 @@ urlpatterns = [
     path('signup/', accounts.views.signup, name = 'signup'),
     path('login/', accounts.views.login, name = 'login'),
     path('logout/', accounts.views.logout, name='logout'),
-    path('search/<str:movie_name>',main.views.search,name='search'),
+    path('search/',main.views.search,name='search'),
+    path('click/<str:movie_name>',main.views.click,name='click'),
     path('shoppingbag/', main.views.shoppingbag, name='shoppingbag'),
     path('ranking/', main.views.ranking, name='ranking'),
     path('tag/', main.views.tag, name='tag'),
     path('fullcalendar/',fullcalendar.views.fullcalendar,name='fullcalendar'),
+    path('random/',main.views.random,name='random'),
 ]
