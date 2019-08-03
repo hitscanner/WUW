@@ -32,3 +32,4 @@ def logout(request):
         auth.logout(request)
         return redirect('index')
     return render(request, 'signup.html')
+

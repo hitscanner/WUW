@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect 
 from .models import Movie
+from django.contrib.auth.models import User
 import requests
 from bs4 import BeautifulSoup
 from django.http import HttpResponse,JsonResponse
@@ -26,13 +27,21 @@ def detail(request,movie_id):
 
 def search(request):
     searcht=request.GET['search']
-    
     movie=Movie.objects.filter(name__icontains=searcht)
-
     context={
         "movie":movie,
     }
     return render(request,'search.html',context)
+
+
+def cart(request,user_id):
+    user = User.objects.get(id = user_id)
+    like_movies = user.like_user_set.all()
+    context={
+        "like_movies":like_movies,
+    }
+
+    return render(request, 'cart.html',context)
 
 def tag(request):
 
@@ -45,9 +54,7 @@ def random(request):
     }
     return render(request,'random.html',context)
 
-def shoppingbag(request):
 
-    return render(request, 'shoppingbag.html')
 
 def ranking(request):
     url1 = "https://movie.naver.com/movie/sdb/rank/rmovie.nhn"

@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%block content%}
+{% load staticfiles %}
+<div class="mt-5 mb-5">
+        <div class="row">
+            {%for m in like_movies%}
+            <div class="col-sm-12 col-md-4 mb-5">
+                <div class="card ">
+                    <div class="card-body p-2">
+                        <i id="heart" class="fas fa-heart" style="color: red"></i><span style="color:black;font-weight:bold;"> {{m.like_count}}</span>
+                    </div>
+                    {%if m.poster%}
+                    <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
+                    {%elif m.poster == ''%}
+                    <img src="{%static 'default_img.jpg'%}" class="card-img-top" alt="{{m.name}}">
+                    {%endif%}
+                    <div class="p-2 card-body">
+                        <div align="center" style="height:2rem;">
+                            {%if m.netflix == True%}
+                            <img class="mr-3" style="width:2rem;" src="{%static 'icon/netflix.png'%}">
+                            {%endif%}
+                            {%if m.watcha == True%}
+                            <img style="width:2rem;" src="{%static 'icon/watcha.png'%}">
+                            {%endif%}
+                        </div>
+                        <a href="{%url 'detail' m.id%}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+{%endblock%}
