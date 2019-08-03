@@ -5,7 +5,7 @@ class Movie(models.Model):
     name=models.CharField(max_length=100)
     poster=models.TextField(blank=True)
     # like=models.ManyToManyField(User)
-    youtube = models.BooleanField(default=False) 
+    # youtube = models.BooleanField(default=False) 
     netflix = models.BooleanField(default=False)
     watcha = models.BooleanField(default=False)
 

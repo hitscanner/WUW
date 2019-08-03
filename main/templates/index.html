@@ -2,7 +2,7 @@
 {%block content%}
 {% load staticfiles %}
 
-<center style="margin-top:5em">
+<div style="margin-top:5em" align="center">
     <h1 class="logo">왓츄원</h1>
     <br>
     <form action="{%url 'search'%}">
@@ -13,22 +13,39 @@
             </div>
         </div>
     </form>
-</center>
+</div>
 <div align="center">
     <button type="button" class="btn btn-outline-secondary"><a href="{%url 'ranking'%}">인기 순위</a></button>
     <button type="button" class="btn btn-outline-secondary"><a href="{%url 'tag'%}">태그</a></button>
     <button type="button" class="btn btn-outline-secondary"><a href="{%url 'random'%}">랜덤</a></button>
 </div>
 <div class="container mt-5 mb-5">
-        <div class="row" align="center">
+        <div class="row" >
             {%for m in movie%}
-            <div class="col mb-3">
-                <a href ="{%url 'click' m.name%}"><img class="poster" src="{{m.poster}}"> </a>
-                <br>
+            <div class="col-sm-12 col-md-4 mb-3">
+                <div class="card">
+                    {%if m.poster%}
+                    <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
+                    {%elif m.poster == ''%}
+                    <img src="https://aliceasmartialarts.com/wp-content/uploads/2017/04/default-image.jpg" class="card-img-top" alt="{{m.name}}">
+                    {%endif%}
+                    <div class="p-2 card-body">
+                        <div align="center">
+                        {%if m.netflix == True%}
+                            <img class="mr-3" style="height:2rem;widhth:2rem;" src="{%static 'icon/netflix.png'%}">
+                        {%endif%}
+                        {%if m.watcha == True%}
+                            <img style="height:2rem;widhth:2rem;" class="img-fluid" src="{%static 'icon/watcha.png'%}">
+                        {%endif%}
+                        </div>
+                        <a href="{%url 'detail' m.id%}" class="stretched-link"></a>
+                    </div>
+                </div>
             </div>
             {%endfor%}
         </div>
     </div> 
+    
 <!-- <div class="container mt-5 mb-5">
     <div class="row" align="center">
         <div class="col">

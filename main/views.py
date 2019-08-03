@@ -5,19 +5,19 @@ from .models import Movie
 
 # Create your views here.
 def index(request):
-    movie = Movie.objects.all()
+    movie=Movie.objects.order_by('?')[:51]
     context={
         "movie":movie,
     }
 
     return render(request,'index.html',context)
 
-def click(request,movie_name):
-    movie = Movie.objects.get(name = movie_name)
+def detail(request,movie_id):
+    movie = Movie.objects.get(id = movie_id)
     context={
         "movie":movie,
     }
-    return render(request,'click.html',context)
+    return render(request,'detail.html',context)
 
 def search(request):
     searcht=request.GET['search']
@@ -32,6 +32,7 @@ def search(request):
 def tag(request):
 
     return render(request,'tag.html')
+
 def random(request):
     movie=Movie.objects.order_by('?')[0]
     context={
