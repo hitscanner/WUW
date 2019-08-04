@@ -34,14 +34,18 @@
             </div>
             {%endfor%}
         </div>
-        <div>
+        <hr><br>
+        <div align="center">
+            <h3>선택한 영화는</h3>
             {%if watcha_cnt < netflix_cnt%}
-                <h1>넷플릭스가 더 많</h1>
+                <h2 style="display: inline-block">넷플릭스</h2>
             {%elif  watcha_cnt > netflix_cnt%}
-                <h1>왓챠 플레이가 더 많</p>
+                <h2 style="display: inline-block">왓챠 플레이</h2>
             {%else%}
-                <h1>둘다 똑</>
+                <h2 style="display: inline-block">넷플릭스,왓챠 플레이</h2>
             {%endif%}
+            <h3 style="display: inline-block">에 더 많아요!</h3>
         </div>
+        <br><br>
     </div>
 {%endblock%}
