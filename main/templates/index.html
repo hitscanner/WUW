@@ -64,6 +64,7 @@
         <li class="page-item ml-auto"><a class="page-link" href="?page={{ movies.next_page_number }}">&gt;</a></li>
         {% endif %}
     </ul>
+    <a href="#" class="top"><button>Top</button></a>
 </nav>
 
 <style>
@@ -119,4 +120,30 @@
         height: 100%;
     }
 </style>
+
+
+<style>
+    a.top {
+    position: fixed;
+    left: 50%;
+    bottom: 50px;
+    display: none;
+    }
+</style>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $( document ).ready( function() {
+    $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 200 ) {
+        $( '.top' ).fadeIn();
+        } else {
+        $( '.top' ).fadeOut();
+        }
+    } );
+    $( '.top' ).click( function() {
+        $( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+        return false;
+    } );
+    } );
+</script>
 {%endblock%}
