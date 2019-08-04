@@ -1,15 +1,16 @@
 {%extends 'base.html'%}
 {%block content%}
+{% load static %}
     <div class='containger'> 
         <br>
         <div class="row">
                 <div class="col">
                 </div>
                 <div class="col-5">
-                    <span style="font-size: 2.5rem; color:black;">Ranking</span>
+                    <img src="{% static 'icon/winner.png' %}" style="width: 6rem">
+                    <!-- <span style="font-size: 2.5rem; color:black;">Ranking</span> -->
                 </div>
                 <div class="col" align="center" style="margin-top: 3.8rem">
-                        {% load static %}
                         <small>출처 : <a href="https://movie.naver.com/movie/sdb/rank/rmovie.nhn"><img src="{% static 'icon/naver.png' %}" alt="naver" style="width: 5rem"></a></small>
                 </div>
             </div>
@@ -19,17 +20,23 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h5> 조회순 </h5>
+                        <!-- <img src="{% static 'icon/attractive.png' %}" style="width: 2.5rem"> -->
+                        <h4 style="font-weight:bold"> 조회순 </h4>
+                    <hr>
                     <br>
                     {%for ranking1 in Movie_ranking1 %}
-                    <a href="https://www.google.com/search?source=hp&ei=62JFXa-dNJqC-Qa84Jz4DA&q={{ranking1}}&oq={{ranking1}}&gs_l=psy-ab.3..0i131j0l8j0i10.1140.2052..2184...0.0..0.123.791.2j7......0....1..gws-wiz.....0..0i131i10.7aCqYaRefPQ&ved=0ahUKEwjvvq2FwObjAhUaQd4KHTwwB88Q4dUDCAU&uact=5"><p> {{ranking1}}</p></a>
+                    <a href="https://www.google.com/search?source=hp&ei=62JFXa-dNJqC-Qa84Jz4DA&q={{ranking1}}&oq={{ranking1}}&gs_l=psy-ab.3..0i131j0l8j0i10.1140.2052..2184...0.0..0.123.791.2j7......0....1..gws-wiz.....0..0i131i10.7aCqYaRefPQ&ved=0ahUKEwjvvq2FwObjAhUaQd4KHTwwB88Q4dUDCAU&uact=5" 
+                    style="text-decoration:none; color:rgb(70, 69, 69);"><p> {{ranking1}}</p></a>
                     {%endfor%}
                 </div>
                 <div class="col">
-                    <h5> 평점순 </h5>
+                        <!-- <img src="{% static 'icon/favourites.png' %}" style="width: 2.5rem"> -->
+                        <h4 style="font-weight:bold"> 평점순 </h4>
+                    <hr>
                     <br>
                     {%for ranking2 in Movie_ranking2 %}
-                    <a href="https://www.google.com/search?source=hp&ei=62JFXa-dNJqC-Qa84Jz4DA&q={{ranking2}}&oq={{ranking2}}&gs_l=psy-ab.3..0i131j0l8j0i10.1140.2052..2184...0.0..0.123.791.2j7......0....1..gws-wiz.....0..0i131i10.7aCqYaRefPQ&ved=0ahUKEwjvvq2FwObjAhUaQd4KHTwwB88Q4dUDCAU&uact=5"><p> {{ranking2}}</p></a>
+                    <a href="https://www.google.com/search?source=hp&ei=62JFXa-dNJqC-Qa84Jz4DA&q={{ranking2}}&oq={{ranking2}}&gs_l=psy-ab.3..0i131j0l8j0i10.1140.2052..2184...0.0..0.123.791.2j7......0....1..gws-wiz.....0..0i131i10.7aCqYaRefPQ&ved=0ahUKEwjvvq2FwObjAhUaQd4KHTwwB88Q4dUDCAU&uact=5"
+                    style="text-decoration:none; color:rgb(70, 69, 69);"><p> {{ranking2}}</p></a>
                     {%endfor%}
                 </div>
         </div>
