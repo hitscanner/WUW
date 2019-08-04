@@ -2,6 +2,8 @@
 {%block content%}
 {% load staticfiles %}
 
+<link rel="stylesheet" href="{%static 'css/index.css'%}">
+
 <div style="margin-top:5em" align="center">
     <h1 class="logo">왓츄원</h1>
     <br>
@@ -63,73 +65,9 @@
         <li class="page-item ml-auto"><a class="page-link" href="?page={{ movies.next_page_number }}">&gt;</a></li>
         {% endif %}
     </ul>
-    <a href="#" class="top"><button>Top</button></a>
 </nav>
+<a href="#" class="top"><button>Top</button></a>
 
-<style>
-    @font-face {
-        font-family: 'LotteMartHappy';
-        font-style: normal;
-        font-weight: 400;
-        src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
-    }
-
-    .logo {
-        font-family: 'LotteMartHappy', sans-serif;
-    }
-
-    button,
-    button::after {
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s;
-    }
-
-    button {
-        background: none;
-        border: 3px solid rgb(255, 255, 255);
-        border-radius: 5px;
-        color: rgba(255, 187, 0, 0.849);
-        position: relative;
-        text-transform: uppercase;
-    }
-
-    button::before,
-    button::after {
-        background: rgba(255, 187, 0, 0.849);
-        content: '';
-        position: absolute;
-        z-index: -1;
-    }
-
-    button:hover {
-        color: #000000;
-    }
-
-    /* BUTTON 1 */
-    .btn-1::after {
-        height: 0;
-        left: 0;
-        top: 0;
-        width: 100%;
-    }
-
-    .btn-1:hover:after {
-        height: 100%;
-    }
-</style>
-
-<!-- 애니메이션 스크롤업 요부터~ -->
-<style>
-    a.top {
-    position: fixed;
-    left: 90%;
-    bottom: 50px;
-    display: none;
-    }
-</style>
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     $( document ).ready( function() {
     $( window ).scroll( function() {

@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load staticfiles %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>What U Want - 왓츄원</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9NlqO4dP5KfioUGS568UFwM3lbWf3Uj3Qb7FBHuIuhLoDp3ZgAqPE1/MYLEBPZYM" crossorigin="anonymous">
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
     <script src="https://kit.fontawesome.com/5ac56ffa94.js"></script>
+
+    <link rel="stylesheet" href="{%static 'css/base.css'%}">
 </head>
 
 <body>
-    {% load staticfiles %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="{%url 'index'%}" id="logo">왓츄원</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -32,14 +29,14 @@
                 <li class="nav-item ">
                     <form id="signout" style="display: inline;" action="{%url 'logout'%}" method="POST">
                         {%csrf_token%}
-                        <a class="nav-link" href="javascript:void(0)" onclick="signout()" data-display="static">
+                        <a class="nav-link nav-text" href="javascript:void(0)" onclick="signout()" data-display="static">
                             로그아웃
                         </a>
                     </form>
                 </li>
                 {% else %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle nav-text" href="javascript:void(0)" data-toggle="dropdown"
                         data-display="static">
                         회원가입
                     </a>
@@ -58,12 +55,12 @@
                                 <input type="password" class="form-control" id="exampleInputEmail1" name="password2"
                                     aria-describedby="emailHelp" placeholder="Password_Check" size='50'>
                             </div>
-                            <button type="submit" class="btn btn-primary">회원가입</button>
+                            <button type="submit" class="btn btn-primary ">회원가입</button>
                         </form>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle nav-text" href="javascript:void(0)" data-toggle="dropdown"
                         data-display="static">
                         로그인
                     </a>
@@ -83,7 +80,7 @@
                     </div>
                 </li>
                 {% endif %}
-                <a class="nav-link" href="javascript:void(0)" onclick="showPopup();">신작</a>
+                <a class="nav-link nav-text" href="javascript:void(0)" onclick="showPopup();">신작</a>
             </ul>
         </div>
     </nav>
@@ -104,117 +101,15 @@
             </li>
         </ul>
     </div>
-    {% endif %}
-    <style>
-        @font-face {
-            font-family: 'S-CoreDream-3Light';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        * {
-            font-family: 'WONDotum', sans-serif;
-        }
+    {% endif %} 
 
-        #logo {
-            font-family: 'S-CoreDream-3Light', sans-serif;
-        }
-        
-
-        .sticky-social-bar {
-            padding: 0;
-            margin: 0;
-            top: 30%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-            width: 11.25rem;
-            background-color: #78c2ad;
-            transition: all 0.3s ease-in-out;
-            position: fixed;
-            left: -8.75rem;
-        }
-
-        .sticky-social-bar .social-icon {
-            list-style-type: none;
-            color: #fefefe;
-            background-color: inherit;
-            margin: 0;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-            font-size: 1.1rem;
-            padding: 0.25rem 0.25rem 0.5rem;
-        }
-
-        .sticky-social-bar .social-icon:first-of-type {
-            padding-top: 0.375rem;
-        }
-
-        .sticky-social-bar .social-icon {
-            list-style-type: none;
-            color: rgb(255, 136, 0);
-            background-color: inherit;
-            margin: 0;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-            font-size: 1.1rem;
-            padding: 0.25rem 0.25rem 0.5rem;
-        }
-
-        .sticky-social-bar .social-icon:first-of-type {
-            padding-top: 0.375rem;
-        }
-
-        .sticky-social-bar .social-icon:last-of-type {
-            padding-bottom: 0.625rem;
-        }
-
-        .sticky-social-bar .social-icon>a {
-            color: inherit;
-            background-color: inherit;
-        }
-
-        .sticky-social-bar .social-icon>a>.fa {
-            padding: 0.5rem;
-            width: 2rem;
-            height: 2rem;
-            float: right;
-        }
-
-        .sticky-social-bar .social-icon>a>.fa.fa-basekt {
-            background-color: #ffffff;
-        }
-
-        .sticky-social-bar .social-icon>a>.social-icon-text {
-            font-size: 90%;
-            color: #fefefe;
-            text-transform: uppercase;
-            display: inline-block;
-            padding-top: 0.375rem;
-            margin-right: 0.25rem;
-        }
-
-        .sticky-social-bar .social-icon:hover {
-            -webkit-transform: translateX(5rem);
-            -ms-transform: translateX(5rem);
-            transform: translateX(5rem);
-        }
-
-        .sticky-social-bar .social-icon:hover>a {
-            color: inherit;
-            background-color: inherit;
-        }
-        
-    </style>
     <script>
         function signout() {
             document.getElementById("signout").submit();
         }
-    </script>
-
-    <script language="javascript">
         function showPopup() { window.open("{%url 'fullcalendar'%}", "a", "width=600, height=530, left=100, top=50"); }
-    </script>
+
+    </script> 
 </body>
 
 </html>
