@@ -2,8 +2,9 @@
 {%block content%}
 {% load staticfiles %}
 <div class="mt-5 mb-5">
-        {{netflix_cnt}}
+        <!-- {{netflix_cnt}}
         {{watcha_cnt}}
+        {{cnt}} -->
         <div class="row">
             {%for m in like_movies%}
             <div class="col-sm-12 col-md-4 mb-5">
@@ -32,6 +33,17 @@
                 </div>
             </div>
             {%endfor%}
+        </div>
+        <div>
+            {%if cnt == 0%}
+                <h1>넷플릭스가 더 많</h1>
+            {%endif%}
+            {%if cnt == 1%}
+                <h1>왓챠 플레이가 더 많</p>
+            {%endif%}
+            {%if cnt == 2%}
+                <h1>둘다 똑</>
+            {%endif%}
         </div>
     </div>
 {%endblock%}
