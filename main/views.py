@@ -38,6 +38,7 @@ def search(request):
     movie=Movie.objects.filter(name__icontains=searcht)
     context={
         "movie":movie,
+        "searcht":searcht,
     }
     return render(request,'search.html',context)
 
