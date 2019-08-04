@@ -29,7 +29,6 @@ urlpatterns = [
     path('ranking/', main.views.ranking, name='ranking'),
     path('tag/', main.views.tag, name='tag'),
     path('fullcalendar/',fullcalendar.views.fullcalendar,name='fullcalendar'),
-    path('random/',main.views.random,name='random'),
     path('cart/<int:user_id>', main.views.cart, name='cart'),
     
     path('like/',main.views.like,name='like'), 

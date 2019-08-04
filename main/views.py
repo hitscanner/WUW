@@ -23,7 +23,11 @@ def index(request):
     return render(request,'index.html',context)
 
 def detail(request,movie_id):
-    movie = Movie.objects.get(id = movie_id)
+    if movie_id == 0:
+        movie=Movie.objects.order_by('?')[0]
+    else:
+        movie = Movie.objects.get(id = movie_id)
+
     context={
         "movie":movie,
     }
@@ -60,16 +64,7 @@ def cart(request,user_id):
 
 def tag(request):
 
-    return render(request,'tag.html')
-
-def random(request):
-    movie=Movie.objects.order_by('?')[0]
-    context={
-        "movie":movie,
-    }
-    return render(request,'random.html',context)
-
-
+    return render(request,'tag.html') 
 
 def ranking(request):
     url1 = "https://movie.naver.com/movie/sdb/rank/rmovie.nhn"
