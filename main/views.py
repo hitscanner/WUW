@@ -40,9 +40,19 @@ def search(request):
 def cart(request,user_id):
     user = User.objects.get(id = user_id)
     like_movies = user.like_user_set.all()
+    nnum=0
+    wnum=0
+
+    for m in like_movies:
+        if m.netflix == "True":
+            nnum+=1
+        if m.watcha == "True":
+            wnum+=1
 
     context={
         "like_movies":like_movies,
+        "nnum":nnum,
+        "wnum":wnum,
     }
 
     return render(request, 'cart.html',context)
