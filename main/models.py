@@ -26,7 +26,7 @@ class Movie(models.Model):
                                         related_name='like_user_set',
                                         through='Like')
     def __str__(self):
-        return '%d - %s' % (self.id,self.name)   
+        return '%s' % (self.name)   
     
     @property
     def like_count(self):
