@@ -35,13 +35,11 @@
             {%endfor%}
         </div>
         <div>
-            {%if cnt == 0%}
+            {%if watcha_cnt < netflix_cnt%}
                 <h1>넷플릭스가 더 많</h1>
-            {%endif%}
-            {%if cnt == 1%}
+            {%elif  watcha_cnt > netflix_cnt%}
                 <h1>왓챠 플레이가 더 많</p>
-            {%endif%}
-            {%if cnt == 2%}
+            {%else%}
                 <h1>둘다 똑</>
             {%endif%}
         </div>

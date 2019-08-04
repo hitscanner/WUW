@@ -17,6 +17,7 @@ def index(request):
     movies = paginator.get_page(now_page) 
     context={
         "movies":movies,
+
     }
 
     return render(request,'index.html',context)
@@ -42,7 +43,6 @@ def cart(request,user_id):
     like_movies = user.like_user_set.all()
     netflix_cnt=0
     watcha_cnt=0
-    cnt=0
 
     for m in like_movies:
         if m.netflix == True:
@@ -50,18 +50,10 @@ def cart(request,user_id):
         if m.watcha == True:
             watcha_cnt+=1
 
-    if netflix_cnt > watcha_cnt:
-        cnt=0
-    elif netflix_cnt < watcha_cnt:
-        cnt=1
-    else:
-        cnt=2
-
     context={
         "like_movies":like_movies,
         "netflix_cnt":netflix_cnt,
         "watcha_cnt":watcha_cnt,
-        "cnt":cnt,
     }
 
     return render(request, 'cart.html',context)
