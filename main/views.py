@@ -40,6 +40,7 @@ def search(request):
 def cart(request,user_id):
     user = User.objects.get(id = user_id)
     like_movies = user.like_user_set.all()
+
     context={
         "like_movies":like_movies,
     }
