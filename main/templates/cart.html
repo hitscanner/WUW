@@ -2,6 +2,8 @@
 {%block content%}
 {% load staticfiles %}
 <div class="mt-5 mb-5">
+        <!-- {{nnum}}
+        {{wnum}}  -->
         <div class="row">
             {%for m in like_movies%}
             <div class="col-sm-12 col-md-4 mb-5">
@@ -27,7 +29,6 @@
                         </div>
                         <a href="{%url 'detail' m.id%}" class="stretched-link"></a>
                     </div>
-
                 </div>
             </div>
             {%endfor%}
