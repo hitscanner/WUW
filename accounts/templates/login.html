@@ -2,26 +2,25 @@
 {%block content%}
 
 <center style="margin-top:5em">
+    <div style="margin-top: 10rem">
+        {% if error %}
+        {{ error }}<br><br>
+        {% endif %}
+    </div>
 
-    <h1>Login</h1>
     <form action="{%url 'login'%}" method="post">
         {%csrf_token%}
-        Username:
+        <div>
         <br>
-        <input name="username" type="text" value="">
-        <br>
-        Password:
-        <br>
-        <input name="password" type="password" value="">
-        <br>
-        <br>
+        Username <input name="username" type="text" value="">
+        <br><br>
+        Password <input name="password" type="password" value="">
+        <br><br>
+        </div>
         <input class="btn btn-primary" type="submit" value="Login">
 
 
     </form>
-    
-    {% if error %}
-        {{ error }}<br><br>
-    {% endif %}
+
 </center>
 {%endblock%}
