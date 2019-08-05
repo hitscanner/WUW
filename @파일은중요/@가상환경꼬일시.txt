@@ -1,10 +1,12 @@
 
-가상환경 꼬였을때,
-1. 다음 링크에서 파일받아 myvenv 폴더 만들고 풀어주면 됨
+가상환경 꼬였을때, 두가지 방법으로 처리
+
+방법1. 다음 링크에서 파일받아 myvenv 폴더 만들고 풀어주면 됨
 https://filebin.net/7m9fbaklqulhwzmq
 
-2. 가상환경을 새로 생성 후 터미널에 다음 명령어 입력
+방법2. 가상환경을 새로 생성 후 터미널에 다음 명령어 입력
 pip install -r requirements.txt
+(requirements.txt의 모든 라이브러리를 자동 설치해준다)
 
 
 requirements.txt 업데이트!
