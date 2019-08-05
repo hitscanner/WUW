@@ -14,6 +14,12 @@
     <script src="https://kit.fontawesome.com/5ac56ffa94.js"></script>
 
     <link rel="stylesheet" href="{%static 'css/base.css'%}">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -108,5 +114,45 @@
         function showPopup() { window.open("{%url 'fullcalendar'%}", "a", "width=600, height=530, left=100, top=50"); }
 
     </script> 
+
+
+
+
+    <!-- 검색어 자동완성 scrpits -->
+    <script type="text/javascript">
+
+        //<![CDATA[
+        
+        $(function() {
+        
+            var availableCity = ["서울","부산","대구","광주","울산"];
+        
+            $("#city").autocomplete({
+        
+                source: availableCity,
+        
+                select: function(event, ui) {
+        
+                    console.log(ui.item);
+        
+                },
+        
+                focus: function(event, ui) {
+        
+                    return false;
+        
+                    //event.preventDefault();
+        
+                }
+        
+            });
+        
+        });
+        
+        //]]>
+        
+        </script>
+
+        <!-- 여기까지 -->
 </body>
 </html>
