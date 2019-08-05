@@ -14,6 +14,8 @@
     <script src="https://kit.fontawesome.com/5ac56ffa94.js"></script>
 
     <link rel="stylesheet" href="{%static 'css/base.css'%}">
+    <link rel="stylesheet" href="{%static 'css/index.css'%}">
+
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -106,6 +108,27 @@
         </ul>
     </div>
     {% endif %} 
+
+    
+<!-- 스르륵 기능 시작 -->
+    <a href="#" class="top"><button>Top</button></a>
+
+    <script>
+        $( document ).ready( function() {
+        $( window ).scroll( function() {
+            if ( $( this ).scrollTop() > 200 ) {
+            $( '.top' ).fadeIn();
+            } else {
+            $( '.top' ).fadeOut();
+            }
+        } );
+        $( '.top' ).click( function() {
+            $( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+            return false;
+        } );
+        } );
+    </script>
+<!-- 요까이 -->
 
     <script>
         function signout() {
