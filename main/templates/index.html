@@ -8,12 +8,26 @@
     <h1 class="logo">왓츄원</h1>
     <br>
     <form action="{%url 'search'%}">
-        <div class="input-group mb-3">
+
+        <!-- 원본 -->
+        <!-- <div class="input-group mb-3">
             <input type="text" name="search" class="form-control" aria-describedby="button-addon2" autocomplete="off">
             <div class="input-group-append">
                 <input type='submit' value="검색" class="btn btn-outline-secondary" type="button" id="button-addon2">
             </div>
-        </div>
+        </div> -->
+
+        <!-- 자동완성 여깁터 -->
+        <div class="input-group mb-3">
+                <input type="text" id="city" name="search" class="form-control" aria-describedby="button-addon2" autocomplete="off">
+                <div class="input-group-append">
+                    <input type='submit' value="검색" class="btn btn-outline-secondary" type="button" id="city">
+                </div>
+            </div>
+
+        <!-- 여기까지 -->
+
+
     </form>
 </div>
 <div align="center">
