@@ -31,10 +31,10 @@
         {%for m in movie%}
         <div class="col-sm-12 col-md-4 mb-3">
             <div class="card">
-                <div class="card-body p-2">
+                <!-- <div class="card-body p-2">
                     <i id="heart" class="fas fa-heart" style="color: red"></i><span
                         style="color:black;font-weight:bold;"> {{m.like_count}}</span>
-                </div>
+                </div> -->
                 {%if m.poster%}
                 <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
                 {%elif m.poster == ''%}

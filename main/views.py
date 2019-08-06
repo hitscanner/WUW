@@ -11,8 +11,8 @@ except ImportError:
 from django.core.paginator import Paginator
 
 def index(request):
-    movies=Movie.objects.order_by('?')[:51]
-    paginator = Paginator(movies,6) 
+    movies=Movie.objects.all()[:51]
+    paginator = Paginator(movies,51) 
     now_page = request.GET.get('page')
     movies = paginator.get_page(now_page) 
     context={

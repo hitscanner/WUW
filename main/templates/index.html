@@ -8,7 +8,6 @@
     <h1 class="logo">왓츄원</h1>
     <br>
     <form action="{%url 'search'%}">
-
         <!-- 원본 -->
         <!-- <div class="input-group mb-3">
             <input type="text" name="search" class="form-control" aria-describedby="button-addon2" autocomplete="off">
@@ -19,24 +18,23 @@
 
         <!-- 자동완성 여깁터 -->
         <div class="input-group mb-3">
-                <input type="text" id="city" name="search" class="form-control" aria-describedby="button-addon2" autocomplete="off">
-                <div class="input-group-append">
-                    <input type='submit' value="검색" class="btn btn-outline-secondary" type="button" id="city">
-                </div>
+            <input type="text" id="city" name="search" class="form-control" aria-describedby="button-addon2"
+                autocomplete="off">
+            <div class="input-group-append">
+                <input type='submit' value="검색" class="btn btn-outline-secondary" type="button" id="city">
             </div>
-
+        </div>
         <!-- 여기까지 -->
-
-
     </form>
 </div>
 <div align="center">
     <button class="btn-1"><a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);">태그</a></button>
-    <button class="btn-1"><a href="{%url 'ranking'%}" style="text-decoration:none; color:rgb(70, 69, 69);">인기순위</a></button>
+    <button class="btn-1"><a href="{%url 'ranking'%}"
+            style="text-decoration:none; color:rgb(70, 69, 69);">인기순위</a></button>
     <!-- <button class="btn-1"><a href="{%url 'detail' 0%}" style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button> -->
-    <button class="btn-1"><a href="{%url 'random'%}"
-        style="text-decoration:none; color:rgb(70, 69, 69);"
-        onclick="window.open(this.href, '_blank', 'width=550px,height=650px,top=20,left=400,toolbars=no,scrollbars=no'); return false;">
+    <button class="btn-1">
+        <a href="{%url 'random'%}" style="text-decoration:none; color:rgb(70, 69, 69);"
+            onclick="window.open(this.href, '_blank', 'width=550px,height=650px,top=20,left=400,toolbars=no,scrollbars=no'); return false;">
             랜덤</a></button>
 </div>
 <div class="mt-5 mb-5">
@@ -45,25 +43,37 @@
         <div class="col-sm-12 col-md-4 mb-5">
             <div class="card ">
                 <div class="card-body p-2">
-                    <i id="heart" class="fas fa-heart" style="color: red"></i><span
-                        style="color:black;font-weight:bold;"> {{m.like_count}}</span>
+                    <button class="like-btn" id="{{m.id}}" onclick="like(this.id)">
+                        {%if request.user in m.like_user_set.all %}
+                        <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                        <i id="hearts_{{m.id}}" class="fas fa-heart heart"></i>
+                        {%else%}
+                        <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                        <i id="heart_{{m.id}}" class="far fa-heart heart"></i>
+                        {%endif%}
+                    </button>
+
                 </div>
-                {%if m.poster%}
-                <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
-                {%elif m.poster == ''%}
-                <img src="{%static 'default_img.jpg'%}" class="card-img-top" alt="{{m.name}}">
-                {%endif%}
-                <div class="p-2 card-body">
-                    <div align="center" style="height:2rem;">
-                        {%if m.netflix == True%}
-                        <img class="mr-3" style="width:2rem;" src="{%static 'icon/netflix.png'%}">
+                <div style="transform: rotate(0);">
+                    <a href="{%url 'detail' m.id%}" class="stretched-link">
+                        {%if m.poster%}
+                        <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
+                        {%elif m.poster == ''%}
+                        <img src="{%static 'default_img.jpg'%}" class="card-img-top" alt="{{m.name}}">
                         {%endif%}
-                        {%if m.watcha == True%}
-                        <img style="width:2rem;" src="{%static 'icon/watcha.png'%}">
-                        {%endif%}
+                    </a>
+                    <div class="p-2 card-body">
+                        <div align="center" style="height:2rem;">
+                            {%if m.netflix == True%}
+                            <img class="mr-3" style="width:2rem;" src="{%static 'icon/netflix.png'%}">
+                            {%endif%}
+                            {%if m.watcha == True%}
+                            <img style="width:2rem;" src="{%static 'icon/watcha.png'%}">
+                            {%endif%}
+                        </div>
                     </div>
-                    <a href="{%url 'detail' m.id%}" class="stretched-link"></a>
                 </div>
+
             </div>
         </div>
         {%endfor%}
@@ -82,4 +92,104 @@
         {% endif %}
     </ul>
 </nav>
+
+<style>
+    @font-face {
+        font-family: 'LotteMartHappy';
+        src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    .like-btn {
+        background-color: transparent !important;
+        border-color: transparent;
+        border: 0;
+        outline: 0;
+    }
+
+    .like-btn:focus {
+        outline: 0;
+    }
+
+    .heart {
+        color: red;
+    }
+
+    .logo {
+        font-family: 'LotteMartHappy', sans-serif;
+    }
+
+    .btn-1,
+    .btn-1::after {
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+
+    .btn-1 {
+        background: none;
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 5px;
+        color: rgba(255, 187, 0, 0.849);
+        position: relative;
+        text-transform: uppercase;
+    }
+
+    .btn-1::before,
+    .btn-1::after {
+        background: rgba(255, 187, 0, 0.849);
+        content: '';
+        position: absolute;
+        z-index: -1;
+    }
+
+    .btn-1:hover {
+        color: #000000;
+    }
+
+    /* BUTTON 1 */
+    .btn-1::after {
+        height: 0;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .btn-1:hover:after {
+        height: 100%;
+    }
+
+    a.top {
+        position: fixed;
+        left: 90%;
+        bottom: 50px;
+        display: none;
+    }
+</style>
+
+<script>
+    function like(id) {
+        $.ajax({
+            url: "{%url 'like'%}",
+            data: { 'movie_id': id },
+            dataType: "json",
+            success: function (response) {
+                console.log(response)
+                $('#message').html(response.message)
+                if (response.message == "좋아요")
+                //좋아요 눌렀을 때 
+                {
+                    $('#heart_' + id).attr("class", "fas fa-heart heart")
+                }
+                else if (response.message == "좋아요 취소")
+                //좋아요 상태에서 다시 눌렀을 때 
+                {
+                    $('#heart_' + id).attr("class", "far fa-heart heart")
+                }
+            }
+        })
+    } 
+</script>
 {%endblock%}
