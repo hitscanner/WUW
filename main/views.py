@@ -67,6 +67,14 @@ def tag(request):
 
     return render(request,'tag.html') 
 
+def random(request):
+    movie=Movie.objects.order_by('?')[0]
+
+    context={
+        "movie":movie,
+    }
+    return render(request,'random.html',context)
+
 def ranking(request):
     url1 = "https://movie.naver.com/movie/sdb/rank/rmovie.nhn"
 

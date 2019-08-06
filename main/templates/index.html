@@ -33,9 +33,11 @@
 <div align="center">
     <button class="btn-1"><a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);">태그</a></button>
     <button class="btn-1"><a href="{%url 'ranking'%}" style="text-decoration:none; color:rgb(70, 69, 69);">인기순위</a></button>
-    <button class="btn-1"><a href="{%url 'detail' 0%}" style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button>
-    <a href="{%url 'detail' 0%}"onclick="window.open(this.href, '_blank', 'width=550px,height=650px,top=20,left=400,toolbars=no,scrollbars=no'); return false;">
-            랜덤 팝업 테스트</a>
+    <!-- <button class="btn-1"><a href="{%url 'detail' 0%}" style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button> -->
+    <button class="btn-1"><a href="{%url 'random'%}"
+        style="text-decoration:none; color:rgb(70, 69, 69);"
+        onclick="window.open(this.href, '_blank', 'width=550px,height=650px,top=20,left=400,toolbars=no,scrollbars=no'); return false;">
+            랜덤</a></button>
 </div>
 <div class="mt-5 mb-5">
     <div class="row">
