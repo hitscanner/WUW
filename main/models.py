@@ -7,7 +7,7 @@ class Movie(models.Model):
     # like=models.ManyToManyField(User)
     netflix = models.BooleanField(default=False)
     watcha = models.BooleanField(default=False)
-
+    
     action=models.BooleanField(default=False)
     fantasy=models.BooleanField(default=False)
     thriller=models.BooleanField(default=False)
