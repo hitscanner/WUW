@@ -98,7 +98,8 @@
         <ul class="sticky-social-bar">
             <li class="social-icon">
                 <a href="{%url 'cart' user.id %}">
-                    <i class="fa fas fa-shopping-basket"></i>
+                    <i class="fas fa-heart"></i>
+                    <!-- <i class="fas fa-star"></i> -->
                     <span class="social-icon-text">즐겨찾기</span>
                 </a>
             </li>
@@ -763,16 +764,16 @@
                     color: inherit;
                     background-color: inherit;
                 }
-                
-                .sticky-social-bar .social-icon>a>.fa {
+            
+                .sticky-social-bar .social-icon>a>.fas {
                     padding: 0.5rem;
                     width: 2rem;
                     height: 2rem;
                     float: right;
                 }
                 
-                .sticky-social-bar .social-icon>a>.fa.fa-basekt {
-                    background-color: #ffffff;
+                .sticky-social-bar .social-icon>a>.fas.fa-heart{
+                    background-color: #ffffff00;
                 }
                 
                 .sticky-social-bar .social-icon>a>.social-icon-text {

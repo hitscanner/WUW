@@ -47,9 +47,11 @@
                         {%if request.user in m.like_user_set.all %}
                         <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
                         <i id="hearts_{{m.id}}" class="fas fa-heart heart"></i>
+                        <!-- <i id="hearts_{{m.id}}" class="fas fa-star"></i> -->
                         {%else%}
                         <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
                         <i id="heart_{{m.id}}" class="far fa-heart heart"></i>
+                        <!-- <i id="heart_{{m.id}}" class="far fa-star" style="color: rgb(253, 207, 0);"></i> -->
                         {%endif%}
                     </button>
 
@@ -114,6 +116,10 @@
 
     .heart {
         color: red;
+    }
+
+    .star {
+        color: rgb(253, 207, 0);
     }
 
     .logo {
