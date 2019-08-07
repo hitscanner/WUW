@@ -70,7 +70,8 @@ def tag(request):
 
 def tag_search(request):
     search_s=request.GET['service']
-    search_g=request.GET['genre']
+    # search_g=request.GET['genre']
+    genre_var=request.GET.getlist('genre[]')
 
     if search_s=="netflix":
         movie=Movie.objects.all().filter(Q(netflix = 'True') & Q(watcha = 'False'))
@@ -79,24 +80,24 @@ def tag_search(request):
     elif search_s=="netflix" and search_s=="watcha":
         movie=Movie.objects.all().filter(Q(netflix = 'True') & Q(watcha = 'True'))
     
-    if search_g=="action": 
-        movie=Movie.objects.filter(action= 'True')
-    elif search_g=="fantasy":
-        movie=Movie.objects.filter(fantasy= 'True')
-    elif search_g=="sf":
-        movie=Movie.objects.filter(sf= 'True') 
-    elif search_g=="comdey":
-        movie=Movie.objects.filter(comedy= 'True')
-    elif search_g=="romance":
-        movie=Movie.objects.filter(romance= 'True')
-    elif search_g=="drama":
-        movie=Movie.objects.filter(drama= 'True') 
-    elif search_g=="animation":
-        movie=Movie.objects.filter(animation= 'True') 
-    elif search_g=="thriller":
-        movie=Movie.objects.filter(thriller= 'True') 
-    elif search_g=="horror":
-        movie=Movie.objects.filter(horror= 'True') 
+        if '1' in genre_var: 
+            movie=Movie.objects.filter(action= 'True')
+        if '2' in genre_var:
+            movie=Movie.objects.filter(fantasy= 'True')
+        if '3' in genre_var:
+            movie=Movie.objects.filter(sf= 'True') 
+        if '4' in genre_var:
+            movie=Movie.objects.filter(comedy= 'True')
+        if '5' in genre_var:
+            movie=Movie.objects.filter(romance= 'True')
+        if '6' in genre_var:
+            movie=Movie.objects.filter(drama= 'True') 
+        if '7' in genre_var:
+            movie=Movie.objects.filter(animation= 'True') 
+        if '8' in genre_var:
+            movie=Movie.objects.filter(thriller= 'True') 
+        if '9' in genre_var:
+            movie=Movie.objects.filter(horror= 'True') 
         
     context={
         "movie":movie
