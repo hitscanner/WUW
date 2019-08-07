@@ -8,7 +8,6 @@
     <h1 class="logo">왓츄원</h1>
     <br>
     <form action="{%url 'search'%}">
-
         <!-- 원본 -->
         <!-- <div class="input-group mb-3">
             <input type="text" name="search" class="form-control" aria-describedby="button-addon2" autocomplete="off">
@@ -25,74 +24,282 @@
                 <input type='submit' value="검색" class="btn btn-outline-secondary" type="button" id="city">
             </div>
         </div>
-
         <!-- 여기까지 -->
-
-
     </form>
 </div>
 <div align="center">
-    <button class="btn-1"><a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);">태그</a></button>
+    <!-- <button class="btn-1"><ahref="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);">태그</ahref="{%url></button> -->
+    <!-- <button class="btn-1">
+            <a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);"
+                onclick="window.open(this.href, '_blank', 'width=550px,height=200px,top=420,left=400,toolbars=no,scrollbars=no'); return false;">
+                분류</a></button> -->
     <button class="btn-1"><a href="{%url 'ranking'%}"
             style="text-decoration:none; color:rgb(70, 69, 69);">인기순위</a></button>
-    <button class="btn-1"><a href="{%url 'detail' 0%}"
-            style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button>
-    <a href="{%url 'detail' 0%}"
-        onclick="window.open(this.href, '_blank', 'width=550px,height=650px,top=20,left=400,toolbars=no,scrollbars=no'); return false;">
-        랜덤 팝업 테스트</a>
-</div>
-<div class="mt-5 mb-5">
-    <div class="row">
-        {%for m in movies%}
-        <div class="col-sm-12 col-md-4 mb-5">
-            <div class="card ">
-                <div class="card-body p-2">
-                    <i id="heart" class="fas fa-heart" style="color: red"></i>
-                    <span style="color:black;font-weight:bold;"> {{m.like_count}}</span>
-                </div>
-                {%if m.poster%}
-                <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
-                {%elif m.poster == ''%}
-                <img src="{%static 'default_img.jpg'%}" class="card-img-top" alt="{{m.name}}">
-                {%endif%}
-                <div class="p-2 card-body">
-                    <div align="center" style="height:2rem;">
-                        {%if m.netflix == True%}
-                        <img class="mr-3" style="width:2rem;" src="{%static 'icon/netflix.png'%}">
-                        {%endif%}
-                        {%if m.watcha == True%}
-                        <img style="width:2rem;" src="{%static 'icon/watcha.png'%}">
-                        {%endif%}
+    <!-- <button class="btn-1"><a href="{%url 'detail' 0%}" style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button> -->
+    <button class="btn-1">
+        <a href="{%url 'random'%}" style="text-decoration:none; color:rgb(70, 69, 69);"
+            onclick="window.open(this.href, '_blank', 'width=550px,height=650px,top=20,left=400,toolbars=no,scrollbars=no'); return false;">
+            랜덤</a></button>
+
+    <div class="accordian">
+        <input type="radio" name="accordian" id="answer_">
+        <label for="answer_">분류</label>
+        <div>
+            <form action="{%url 'tag_search' %}">
+                <div>
+                    스트리밍 서비스
+                    <div>
+                        <input type="checkbox" name="service[]" value="netflix" id="netflix">
+                        <label for="netflix">넷플릭스</label>
+                        <input type="checkbox" name="service[]" value="watcha" id="watcha">
+                        <label for="watcha">왓챠 플레이</label>
                     </div>
-                    <a href="{%url 'detail' m.id%}" class="stretched-link"></a>
+                </div>
+                <div>
+                    장르
+                    <div>
+                        <input type="radio" name="genre[]" value="action" id="action">
+                        <label for="action">액션</label>
+                        <input type="radio" name="genre[]" value="fantasy" id="fantasy">
+                        <label for="fantasy">판타지</label>
+                        <input type="radio" name="genre[]" value="sf" id="sf">
+                        <label for="sf">SF</label>
+                        <input type="radio" name="genre[]" value="comedy" id="comedy">
+                        <label for="comedy">코미디</label>
+                        <input type="radio" name="genre[]" value="romance" id="romance">
+                        <label for="romance">로맨스</label>
+                        <input type="radio" name="genre[]" value="drama" id="drama">
+                        <label for="drama">드라마</label>
+                        <input type="radio" name="genre[]" value="animation" id="animation">
+                        <label for="animation">애니메이션</label>
+                        <input type="radio" name="genre[]" value="thriller" id="thriller">
+                        <label for="thriller">스릴러</label>
+                        <input type="radio" name="genre[]" value="horror" id="horror">
+                        <label for="horror">공포</label>
+                    </div>
+                </div>
+
+                <div align="center">
+                    <input type="submit" value="검색">
+                </div>
+            </form>
+        </div>
+        <!-- <input type="radio" name="accordian" id="close_">
+            <label for="close_" style="font-size: 1px;" >닫기</label>
+            <div></div>
+        </div> -->
+    </div>
+
+    <div class="mt-5 mb-5">
+        <div class="row">
+            {%for m in movies%}
+            <div class="col-sm-12 col-md-4 mb-5">
+                <div class="card ">
+                    <div class="card-body p-2">
+                        <button class="like-btn" id="{{m.id}}" onclick="like(this.id)">
+                            {%if request.user in m.like_user_set.all %}
+                            <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                            <i id="hearts_{{m.id}}" class="fas fa-heart heart"></i>
+                            <!-- <i id="hearts_{{m.id}}" class="fas fa-star"></i> -->
+                            {%else%}
+                            <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                            <i id="heart_{{m.id}}" class="far fa-heart heart"></i>
+                            <!-- <i id="heart_{{m.id}}" class="far fa-star" style="color: rgb(253, 207, 0);"></i> -->
+                            {%endif%}
+                        </button>
+
+                    </div>
+                    <div style="transform: rotate(0);">
+                        <a href="{%url 'detail' m.id%}" class="stretched-link">
+                            {%if m.poster%}
+                            <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
+                            {%elif m.poster == ''%}
+                            <img src="{%static 'default_img.jpg'%}" class="card-img-top" alt="{{m.name}}">
+                            {%endif%}
+                        </a>
+                        <div class="p-2 card-body">
+                            <div align="center" style="height:2rem;">
+                                {%if m.netflix == True%}
+                                <img class="mr-3" style="width:2rem;" src="{%static 'icon/netflix.png'%}">
+                                {%endif%}
+                                {%if m.watcha == True%}
+                                <img style="width:2rem;" src="{%static 'icon/watcha.png'%}">
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="ajax_post">
+                    <input type="hidden" id="page" value="2">
                 </div>
             </div>
-            <div id="ajax_post">
-                <input type="hidden" id="page" value="2">
-            </div>
+            {%endfor%}
         </div>
-        {%endfor%}
     </div>
-</div>
+    <nav>
+        <ul class="pagination">
+            {% if movies.has_previous %}
+            <li class="page-item "><a class="page-link" href="?page={{ movies.previous_page_number }}">&lt;</a></li>
+            {% endif %}
+            {% if movies.number > 2 %}
+            <li class="page-item ml-auto"><a class="page-link" href="?page=1"><i class="fas fa-home"></i></a></li>
+            {%endif%}
+            {% if movies.has_next %}
+            <li class="page-item ml-auto"><a class="page-link" href="?page={{ movies.next_page_number }}">&gt;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <style>
+        @font-face {
+            font-family: 'LotteMartHappy';
+            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        .like-btn {
+            background-color: transparent !important;
+            border-color: transparent;
+            border: 0;
+            outline: 0;
+        }
+
+        .like-btn:focus {
+            outline: 0;
+        }
+
+        .heart {
+            color: red;
+        }
+
+        .star {
+            color: rgb(253, 207, 0);
+        }
+
+        .logo {
+            font-family: 'LotteMartHappy', sans-serif;
+        }
+
+        .btn-1,
+        .btn-1::after {
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .btn-1 {
+            background: none;
+            border: 3px solid rgb(255, 255, 255);
+            border-radius: 5px;
+            color: rgba(255, 187, 0, 0.849);
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .btn-1::before,
+        .btn-1::after {
+            background: rgba(255, 187, 0, 0.849);
+            content: '';
+            position: absolute;
+            z-index: -1;
+        }
+
+        .btn-1:hover {
+            color: #000000;
+        }
+
+        /* BUTTON 1 */
+        .btn-1::after {
+            height: 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+
+        .btn-1:hover:after {
+            height: 100%;
+        }
+
+        a.top {
+            position: fixed;
+            left: 90%;
+            bottom: 50px;
+            display: none;
+        }
+
+        input[id*="answer_"] {
+            display: none;
+        }
+
+        input[id*="answer_"]+label {
+            display: block;
+            padding: 3px;
+            border-bottom: 0;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            position: relative;
+        }
+
+        input[id*="answer_"]+label+div {
+            max-height: 0;
+            transition: all .355;
+            overflow: hidden;
+            background: #ebf8ff;
+            font-size: 15px;
+        }
+
+        input[id*="answer_"]:checked+label+div {
+            max-height: 300px;
+        }
 
 
-<script>
-    $(window).scroll(function () {
-        var scrollHeight = $(window).scrollTop() + $(window).height();
-        var documentHeight = $(document).height();
-        if (scrollHeight + 300 >= documentHeight) {
-            var page = $('#page').val()
+        input[id*="close_"] {
+            display: none;
+        }
+
+        input[id*="close_"]+label {
+            border-bottom: 0;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            position: relative;
+        }
+
+        input[id*="close_"]+label+div {
+            max-height: 0;
+            transition: all .355;
+            overflow: hidden;
+            background: #ebf8ff;
+        }
+
+        input[id*="close_"]:checked+label+div {
+            max-height: 10px;
+        }
+    </style>
+
+    <script>
+        function like(id) {
             $.ajax({
-                url: "{%url 'ajax_index'%}",
-                data: { 'page': page },
-                dataType: "html",
+                url: "{%url 'like'%}",
+                data: { 'movie_id': id },
+                dataType: "json",
                 success: function (response) {
                     console.log(response)
+                    $('#message').html(response.message)
+                    if (response.message == "좋아요")
+                    //좋아요 눌렀을 때 
+                    {
+                        $('#heart_' + id).attr("class", "fas fa-heart heart")
+                    }
+                    else if (response.message == "좋아요 취소")
+                    //좋아요 상태에서 다시 눌렀을 때 
+                    {
+                        $('#heart_' + id).attr("class", "far fa-heart heart")
+                    }
                 }
             })
-            $('#page').val(parseInt(page) + 1)
-        }
-    }
-    );
-</script>
-{%endblock%}
+        } 
+    </script>
+    {%endblock%}

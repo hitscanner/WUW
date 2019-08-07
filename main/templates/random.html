@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What U Want - 왓츄원</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/5ac56ffa94.js"></script>
+
+    {% load staticfiles %}
+
+</head>
+
+<body>
+    <div class="row mt-5">
+        <div class="col-sm-12 col-md-6" align="right" style="margin-right: 3rem">
+            <div align="center">
+                <img class="img-fluid" src="{{movie.poster}}" style="height: 70vh;">
+            </div>
+            <br>
+            <span style="font-size: 1.5rem;">
+                <button class="like-btn" id="{{movie.id}}" onclick="like(this.id)">
+                    {%if request.user in movie.like_user_set.all %}
+                    <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                    <i id="heart" class="fas fa-heart"></i>
+                    {%else%}
+                    <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                    <i id="heart" class="far fa-heart"></i>
+                    {%endif%}
+                </button>
+            </span>
+        </div>
+        <div class="col-sm-12 col-md-6" align="left" style="margin-left: 2rem">
+            <h2> {{movie.name}}</h2>
+            <br>
+            {%if movie.netflix == True%}
+            <img class="mr-3" style="height:2rem; width:2rem;" src="{%static 'icon/netflix.png'%}">
+            {%endif%}
+            {%if movie.watcha == True%}
+            <img style="height:2rem; width:2rem;" class="img-fluid" src="{%static 'icon/watcha.png'%}">
+            {%endif%}
+            <br><br>
+            장르:
+            {%if movie.action == True%}
+            액션
+            {%endif%}
+            {%if movie.fantasy == True%}
+            판타지
+            {%endif%}
+            {%if movie.thriller == True%}
+            스릴러
+            {%endif%}
+            {%if movie.comedy == True%}
+            코미디
+            {%endif%}
+            {%if movie.romance == True%}
+            로맨스
+            {%endif%}
+            {%if movie.drama == True%}
+            드라마
+            {%endif%}
+            {%if movie.sf == True%}
+            SF
+            {%endif%}
+            {%if movie.horror == True%}
+            공포
+            {%endif%}
+            {%if movie.animation == True%}
+            애니메이션
+            {%endif%}
+            <br><br>
+            <a href="https://www.google.com/search?source=hp&ei=62JFXa-dNJqC-Qa84Jz4DA&q={{movie.name}}&oq={{movie.name}}&gs_l=psy-ab.3..0i131j0l8j0i10.1140.2052..2184...0.0..0.123.791.2j7......0....1..gws-wiz.....0..0i131i10.7aCqYaRefPQ&ved=0ahUKEwjvvq2FwObjAhUaQd4KHTwwB88Q4dUDCAU&uact=5"
+                style="color: rgb(75, 75, 75)"><img class="mr-3" style="height:1.7rem; width:1.7rem;"
+                    src="{%static 'icon/google.png'%}">검색</a>
+            <br><br>
+        </div>
+    </div>
+</body>
+<style>
+    .like-btn {
+        background-color: transparent !important;
+        border-color: transparent;
+        border: 0;
+        outline: 0;
+    }
+
+    .like-btn:focus {
+        outline: 0;
+    }
+
+    #heart {
+        color: red;
+    }
+</style>
+<script>
+    function like(id) {
+        $.ajax({
+            url: "{%url 'like'%}",
+            data: { 'movie_id': id },
+            dataType: "json",
+            success: function (response) {
+                console.log(response)
+                $('#like_count').html(response.like_count)
+                $('#message').html(response.message)
+                $('.toast').toast('show')
+                if (response.message == "좋아요")
+                //좋아요 눌렀을 때 
+                {
+                    $('#heart').attr("class", "fas fa-heart")
+                }
+                else if (response.message == "좋아요 취소")
+                //좋아요 상태에서 다시 눌렀을 때 
+                {
+                    $('#heart').attr("class", "far fa-heart")
+                }
+            }
+        })
+    } 
+</script>
+
+</html>

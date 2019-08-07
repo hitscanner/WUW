@@ -26,6 +26,7 @@
 
     </div>
 
+<<<<<<< HEAD
     <input type="button" value="삭제" onclick="remove_div(this)">
 
   </div>
@@ -87,6 +88,84 @@
       document.getElementById('field').appendChild(div);
     }
     function remove_div(obj) {
+=======
+    <div id="field"></div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+        
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: [ 'dayGrid' ],
+            locale:"ko",
+            eventClick: function(info) {
+              var eventObj = info.event;
+        
+              if (eventObj.url) {
+                alert(
+                  'Clicked ' + eventObj.title + '.\n' +
+                  'Will open ' + eventObj.url + ' in a new tab'
+                );
+        
+                window.open(eventObj.url);
+        
+                info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
+              } else {
+                alert('Clicked ' + eventObj.title);
+              }
+            },
+            defaultDate: '2019-08-15',
+            events: [
+              {
+                title: 'simple event',
+                start: '2019-08-02'
+              },
+              {
+                title: 'event with URL',
+                url: 'https://www.google.com/',
+                start: '2019-08-03'
+              },
+              {
+                title: '왓챠 ㅇㄴㄹㄴㅇㄻ',
+                url: 'https://www.google.com/search?q=신과함께&oq=신과함께&aqs=chrome..69i57j0l5.6771j0j8&sourceid=chrome&ie=UTF-8',
+                start: '2019-08-09'
+              },
+              {
+                title: '왓챠 ㅇㄴㄹㄴㅇㄻ',
+                url: 'https://www.google.com/search?q=%EC%98%81%ED%99%94+%EC%8B%A0%EA%B3%BC%ED%95%A8%EA%BB%98&oq=%EC%98%81%ED%99%94+%EC%8B%A0%EA%B3%BC%ED%95%A8%EA%BB%98&aqs=chrome..69i57j0l5.6771j0j8&sourceid=chrome&ie=UTF-8',
+                start: '2019-08-09'
+              }
+            ]
+          });
+        
+          calendar.render();
+        });
+
+
+
+    </script>
+
+<!-- div영역추가! -->
+    <script type="text/javascript">
+
+      function add_div(){
+      
+          var div = document.createElement('div');
+      
+      
+      
+          div.innerHTML = document.getElementById('room_type').innerHTML;
+      
+          document.getElementById('field').appendChild(div);
+      
+      }
+      
+      
+      
+      function remove_div(obj){
+      
+>>>>>>> e24bf947c6717a252983e6b2d6fb14ceb1524933
       document.getElementById('field').removeChild(obj.parentNode);
     }
 

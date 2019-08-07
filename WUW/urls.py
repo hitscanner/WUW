@@ -31,10 +31,20 @@ urlpatterns = [
     path('tag/', main.views.tag, name='tag'),
     path('fullcalendar/', fullcalendar.views.fullcalendar, name='fullcalendar'),
     path('cart/<int:user_id>', main.views.cart, name='cart'),
+<<<<<<< HEAD
 
     path('like/', main.views.like, name='like'),
 
     path('signup/', accounts.views.signup, name='signup'),
     path('login/', accounts.views.login, name='login'),
+=======
+    path('random/',main.views.random, name='random'),
+    path('tag_search/',main.views.tag_search,name='tag_search'),
+    
+    path('like/',main.views.like,name='like'), 
+    
+    path('signup/', accounts.views.signup, name = 'signup'),
+    path('login/', accounts.views.login, name = 'login'),
+>>>>>>> e24bf947c6717a252983e6b2d6fb14ceb1524933
     path('logout/', accounts.views.logout, name='logout'),
 ]
