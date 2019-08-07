@@ -79,7 +79,7 @@ def tag_search(request):
     elif search_s=="netflix" and search_s=="watcha":
         movie=Movie.objects.all().filter(Q(netflix = 'True') & Q(watcha = 'True'))
     
-    if search_g=="action":
+    if search_g=="action": 
         movie=Movie.objects.filter(action= 'True')
     elif search_g=="fantasy":
         movie=Movie.objects.filter(fantasy= 'True')
