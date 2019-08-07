@@ -24,6 +24,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+# DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -128,8 +129,6 @@ STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR,'main' ,'static'),
     os.path.join(BASE_DIR,'fullcalendar' ,'static'),
-
-
 ] 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 

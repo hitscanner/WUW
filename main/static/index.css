@@ -1,0 +1,125 @@
+@font-face {
+    font-family: 'LotteMartHappy';
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+}
+
+.like-btn {
+    background-color: transparent !important;
+    border-color: transparent;
+    border: 0;
+    outline: 0;
+}
+
+.like-btn:focus {
+    outline: 0;
+}
+
+.heart {
+    color: red;
+}
+
+.star {
+    color: rgb(253, 207, 0);
+}
+
+.logo {
+    font-family: 'LotteMartHappy', sans-serif;
+}
+
+.btn-1,
+.btn-1::after {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn-1 {
+    background: none;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    color: rgba(255, 187, 0, 0.849);
+    position: relative;
+    text-transform: uppercase;
+}
+
+.btn-1::before,
+.btn-1::after {
+    background: rgba(255, 187, 0, 0.849);
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+.btn-1:hover {
+    color: #000000;
+}
+
+/* BUTTON 1 */
+.btn-1::after {
+    height: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.btn-1:hover:after {
+    height: 100%;
+}
+
+a.top {
+    position: fixed;
+    left: 90%;
+    bottom: 50px;
+    display: none;
+}
+
+input[id*="answer_"] {
+    display: none;
+}
+
+input[id*="answer_"]+label {
+    display: block;
+    padding: 3px;
+    border-bottom: 0;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    position: relative;
+}
+
+input[id*="answer_"]+label+div {
+    max-height: 0;
+    transition: all .355;
+    overflow: hidden;
+    background: #ebf8ff;
+    font-size: 15px;
+}
+
+input[id*="answer_"]:checked+label+div {
+    max-height: 300px;
+}
+
+
+input[id*="close_"] {
+    display: none;
+}
+
+input[id*="close_"]+label {
+    border-bottom: 0;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    position: relative;
+}
+
+input[id*="close_"]+label+div {
+    max-height: 0;
+    transition: all .355;
+    overflow: hidden;
+    background: #ebf8ff;
+}
+
+input[id*="close_"]:checked+label+div {
+    max-height: 10px;
+}

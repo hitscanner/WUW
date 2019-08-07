@@ -11,28 +11,37 @@ except ImportError:
 from django.core.paginator import Paginator
 from django.db.models import Q
 
-
 def index(request):
-    movies=Movie.objects.order_by('?')[:51]
-    paginator = Paginator(movies,51) 
-    now_page = request.GET.get('page')
-    movies = paginator.get_page(now_page)
-    context = {
-        "movies": movies,
-    }
-    return render(request, 'index.html', context)
+    if request.is_ajax():
+        movies = Movie.objects.all()
+        paginator = Paginator(movies, 24)
+        page = request.GET.get('page')
+        # movies = paginator.get_page(page)
+        try:
+            movies = paginator.get_page(page)
+        except PageNotAnInteger:
+            movies = paginator.get_page(1)
+        except EmptyPage:
+            movies = paginator.get_page(paginator.num_pages)
 
+        context = {
+            "movies": movies,
 
-def ajax_index(requests):
-    movies = Movie.objects.all()
-    paginator = Paginator(movies, 9)
-    now_page = request.GET.get('page')
-    movies = paginator.get_page(now_page)
-    context = {
-        "movies": movies,
-    }
-    return render(request, 'ajax_index.html', context)
+        }
+        return render(request, 'ajax_index.html', context)
+    else:
+        movie=Movie.objects.all()
+        paginator = Paginator(movie,24) 
+        page = request.GET.get('page')
+        movies = paginator.get_page(page)
+        last_page =  paginator.num_pages
 
+        context = {
+            "movie":movie,
+            "movies": movies,
+            "last_page": last_page,
+        }
+        return render(request, 'index.html', context)
 
 def detail(request, movie_id):
     if movie_id == 0:

@@ -2,8 +2,6 @@
 {%block content%}
 {% load staticfiles %}
 
-<link rel="stylesheet" href="{%static 'css/index.css'%}">
-
 <div style="margin-top:5em" align="center">
     <h1 class="logo">왓츄원</h1>
     <br>
@@ -18,10 +16,10 @@
 
         <!-- 자동완성 여깁터 -->
         <div class="input-group mb-3">
-            <input type="text" id="city" name="search" class="form-control" aria-describedby="button-addon2"
+            <input type="text" id="search" name="search" class="form-control" aria-describedby="button-addon2"
                 autocomplete="off">
             <div class="input-group-append">
-                <input type='submit' value="검색" class="btn btn-outline-secondary" type="button" id="city">
+                <input type='submit' value="검색" class="btn btn-outline-secondary" type="button">
             </div>
         </div>
         <!-- 여기까지 -->
@@ -95,19 +93,20 @@
             {%for m in movies%}
             <div class="col-sm-12 col-md-4 mb-5">
                 <div class="card ">
-                    <div class="card-body p-2">
+                    <div class="card-body p-2" style="height:2.5em;">
                         <button class="like-btn" id="{{m.id}}" onclick="like(this.id)">
-                            {%if request.user in m.like_user_set.all %}
-                            <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
-                            <i id="hearts_{{m.id}}" class="fas fa-heart heart"></i>
-                            <!-- <i id="hearts_{{m.id}}" class="fas fa-star"></i> -->
-                            {%else%}
-                            <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
-                            <i id="heart_{{m.id}}" class="far fa-heart heart"></i>
-                            <!-- <i id="heart_{{m.id}}" class="far fa-star" style="color: rgb(253, 207, 0);"></i> -->
+                            {%if user.is_authenticated%}
+                                {%if request.user in m.like_user_set.all %}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                                <i id="heart_{{m.id}}" class="fas fa-heart heart"></i>
+                                <!-- <i id="hearts_{{m.id}}" class="fas fa-star"></i> -->
+                                {%else%}
+                                <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                                <i id="heart_{{m.id}}" class="far fa-heart heart"></i>
+                                <!-- <i id="heart_{{m.id}}" class="far fa-star" style="color: rgb(253, 207, 0);"></i> -->
+                                {%endif%}
                             {%endif%}
                         </button>
-
                     </div>
                     <div style="transform: rotate(0);">
                         <a href="{%url 'detail' m.id%}" class="stretched-link">
@@ -128,178 +127,79 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
-                <div id="ajax_post">
-                    <input type="hidden" id="page" value="2">
                 </div>
             </div>
             {%endfor%}
         </div>
+        <div class="row" id="ajax_post">
+            <input type="hidden" id="page" value="2">
+        </div>
     </div>
-    <nav>
-        <ul class="pagination">
-            {% if movies.has_previous %}
-            <li class="page-item "><a class="page-link" href="?page={{ movies.previous_page_number }}">&lt;</a></li>
-            {% endif %}
-            {% if movies.number > 2 %}
-            <li class="page-item ml-auto"><a class="page-link" href="?page=1"><i class="fas fa-home"></i></a></li>
-            {%endif%}
-            {% if movies.has_next %}
-            <li class="page-item ml-auto"><a class="page-link" href="?page={{ movies.next_page_number }}">&gt;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-
-    <style>
-        @font-face {
-            font-family: 'LotteMartHappy';
-            src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartHappy/LotteMartHappyMedium.woff') format('woff');
-            font-style: normal;
-            font-weight: 400;
-        }
-
-        .like-btn {
-            background-color: transparent !important;
-            border-color: transparent;
-            border: 0;
-            outline: 0;
-        }
-
-        .like-btn:focus {
-            outline: 0;
-        }
-
-        .heart {
-            color: red;
-        }
-
-        .star {
-            color: rgb(253, 207, 0);
-        }
-
-        .logo {
-            font-family: 'LotteMartHappy', sans-serif;
-        }
-
-        .btn-1,
-        .btn-1::after {
-            -webkit-transition: all 0.3s;
-            -moz-transition: all 0.3s;
-            -o-transition: all 0.3s;
-            transition: all 0.3s;
-        }
-
-        .btn-1 {
-            background: none;
-            border: 3px solid rgb(255, 255, 255);
-            border-radius: 5px;
-            color: rgba(255, 187, 0, 0.849);
-            position: relative;
-            text-transform: uppercase;
-        }
-
-        .btn-1::before,
-        .btn-1::after {
-            background: rgba(255, 187, 0, 0.849);
-            content: '';
-            position: absolute;
-            z-index: -1;
-        }
-
-        .btn-1:hover {
-            color: #000000;
-        }
-
-        /* BUTTON 1 */
-        .btn-1::after {
-            height: 0;
-            left: 0;
-            top: 0;
-            width: 100%;
-        }
-
-        .btn-1:hover:after {
-            height: 100%;
-        }
-
-        a.top {
-            position: fixed;
-            left: 90%;
-            bottom: 50px;
-            display: none;
-        }
-
-        input[id*="answer_"] {
-            display: none;
-        }
-
-        input[id*="answer_"]+label {
-            display: block;
-            padding: 3px;
-            border-bottom: 0;
-            color: rgb(0, 0, 0);
-            cursor: pointer;
-            position: relative;
-        }
-
-        input[id*="answer_"]+label+div {
-            max-height: 0;
-            transition: all .355;
-            overflow: hidden;
-            background: #ebf8ff;
-            font-size: 15px;
-        }
-
-        input[id*="answer_"]:checked+label+div {
-            max-height: 300px;
-        }
-
-
-        input[id*="close_"] {
-            display: none;
-        }
-
-        input[id*="close_"]+label {
-            border-bottom: 0;
-            color: rgb(0, 0, 0);
-            cursor: pointer;
-            position: relative;
-        }
-
-        input[id*="close_"]+label+div {
-            max-height: 0;
-            transition: all .355;
-            overflow: hidden;
-            background: #ebf8ff;
-        }
-
-        input[id*="close_"]:checked+label+div {
-            max-height: 10px;
-        }
-    </style>
-
-    <script>
-        function like(id) {
-            $.ajax({
-                url: "{%url 'like'%}",
-                data: { 'movie_id': id },
-                dataType: "json",
-                success: function (response) {
-                    console.log(response)
-                    $('#message').html(response.message)
-                    if (response.message == "좋아요")
-                    //좋아요 눌렀을 때 
-                    {
-                        $('#heart_' + id).attr("class", "fas fa-heart heart")
+</div>
+<script>
+    var last_page_num = {{ last_page }};
+    $(window).scroll(function () {
+        var scrollHeight;
+        var documentHeight;
+        var page;
+        scrollHeight = $(window).scrollTop() + $(window).height();
+        documentHeight = $(document).height();
+        if (scrollHeight + 300 >= documentHeight) {
+            page = $('#page').val();
+            if (page > last_page_num) {
+            }
+            else {
+                $.ajax({
+                    async: false,
+                    url: "{%url 'index'%}",
+                    data: {
+                        'page': page
+                    },
+                    dataType: "html",
+                    success: function (response) {
+                        $('#ajax_post').append(response);
                     }
-                    else if (response.message == "좋아요 취소")
-                    //좋아요 상태에서 다시 눌렀을 때 
-                    {
-                        $('#heart_' + id).attr("class", "far fa-heart heart")
-                    }
+                })
+                $('#page').val(parseInt(page) + 1);
+            }
+
+        }
+    });
+</script>
+
+<script>
+    function like(id) {
+        console.log($('#heart_' + id).attr("class"));
+        $.ajax({
+            url: "{%url 'like'%}",
+            data: { 'movie_id': id },
+            dataType: "json",
+            success: function (response) {
+                if ($('#heart_' + id).attr("class") == "far fa-heart heart") {
+                    $('#heart_' + id).attr("class", "fas fa-heart heart")
                 }
-            })
-        } 
-    </script>
-    {%endblock%}
+                else if ($('#heart_' + id).attr("class") == "fas fa-heart heart") {
+                    $('#heart_' + id).attr("class", "far fa-heart heart")
+                }
+            }
+        })
+    } 
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var availablemovie = new Array();
+        {%for m in movie %}
+        availablemovie.push("{{m.name}}");
+        {% endfor %}
+        $("#search").autocomplete({
+            source: availablemovie,
+            select: function (event, ui) {
+            },
+            focus: function (event, ui) {
+                return false;
+            }
+        });
+    });
+</script>
+{%endblock%}
