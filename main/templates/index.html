@@ -33,7 +33,7 @@
             <a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);"
                 onclick="window.open(this.href, '_blank', 'width=550px,height=200px,top=420,left=400,toolbars=no,scrollbars=no'); return false;">
                 분류</a></button> -->
-                <div class="accordian" >
+                <div class="accordian">
                         <input type="radio" name="accordian" id="answer_">
                         <label for="answer_">분류 (안됨)</label>
                         <div><form action="{%url 'tag_search' %}">
@@ -76,6 +76,10 @@
                                     </div>
                                 </form>
                         </div>
+                        
+                        <input type="radio" name="accordian" id="close_">
+                        <label for="close_" style="font-size: 1px;" >닫기</label>
+                        <div></div>
                     </div>
     <button class="btn-1"><a href="{%url 'ranking'%}"
             style="text-decoration:none; color:rgb(70, 69, 69);">인기순위</a></button>
@@ -227,10 +231,9 @@
     }
     input[id*="answer_"]+ label {
         display:block;
-        padding:10px;
+        padding:5px;
         border-bottom:0;
         color:rgb(0, 0, 0);
-        font-weight: 900;
         cursor:pointer;
         position:relative;
     }
@@ -242,7 +245,27 @@
         font-size:15px;
     }
     input[id*="answer_"]:checked + label + div{
-        max-height:600px;
+        max-height:300px;
+    }
+    
+
+    input[id*="close_"]{
+        display:none;
+    }
+    input[id*="close_"]+ label {
+        border-bottom:0;
+        color:rgb(0, 0, 0);
+        cursor:pointer;
+        position:relative;
+    }
+    input[id*="close_"]+ label + div{
+        max-height: 0;
+        transition:all .355;
+        overflow:hidden;
+        background:#ebf8ff;
+    }
+    input[id*="close_"]:checked + label + div{
+        max-height:10px;
     }
 
 </style>
