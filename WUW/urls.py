@@ -31,6 +31,7 @@ urlpatterns = [
     path('fullcalendar/',fullcalendar.views.fullcalendar,name='fullcalendar'),
     path('cart/<int:user_id>', main.views.cart, name='cart'),
     path('random/',main.views.random, name='random'),
+    path('tag_search/',main.views.tag_search,name='tag_search'),
     
     path('like/',main.views.like,name='like'), 
     

@@ -9,9 +9,10 @@ try:
 except ImportError:
     import json
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 def index(request):
-    movies=Movie.objects.all()[:51]
+    movies=Movie.objects.order_by('?')[:51]
     paginator = Paginator(movies,51) 
     now_page = request.GET.get('page')
     movies = paginator.get_page(now_page) 
@@ -64,8 +65,24 @@ def cart(request,user_id):
     return render(request, 'cart.html',context)
 
 def tag(request):
-
+    
     return render(request,'tag.html') 
+
+def tag_search(request):
+    search_s=request.GET['service']
+    search_g=request.GET['genre']
+
+    if search_s=="netflix":
+        movie=Movie.objects.all().filter(Q(netflix = 'True') & Q(watcha = 'False'))
+    elif search_s=="watcha":
+        movie=Movie.objects.all().filter(Q(netflix = 'False') & Q(watcha ='True'))
+    else:
+        movie=Movie.objects.all().filter(Q(netflix = 'True') & Q(watcha = 'True'))
+
+    context={
+        "movie":movie
+    }
+    return render(request,'tag_search.html',context)
 
 def random(request):
     movie=Movie.objects.order_by('?')[0]

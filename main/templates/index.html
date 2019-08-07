@@ -28,7 +28,11 @@
     </form>
 </div>
 <div align="center">
-    <button class="btn-1"><a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);">태그</a></button>
+    <!-- <button class="btn-1"><a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);">태그</a></button> -->
+    <button class="btn-1">
+            <a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);"
+                onclick="window.open(this.href, '_blank', 'width=550px,height=200px,top=420,left=400,toolbars=no,scrollbars=no'); return false;">
+                분류</a></button>
     <button class="btn-1"><a href="{%url 'ranking'%}"
             style="text-decoration:none; color:rgb(70, 69, 69);">인기순위</a></button>
     <!-- <button class="btn-1"><a href="{%url 'detail' 0%}" style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button> -->
@@ -37,6 +41,52 @@
             onclick="window.open(this.href, '_blank', 'width=550px,height=650px,top=20,left=400,toolbars=no,scrollbars=no'); return false;">
             랜덤</a></button>
 </div>
+
+<div class="accordian">
+    <input type="radio" name="accordian" id="answer_">
+    <label for="answer_">분류</label>
+    <div><form action="{%url 'tag_search' %}">
+            <div>
+                스트리밍 서비스
+                <div>
+                <input type="checkbox" name="service" value="netflix" id="netflix">
+                <label for="netflix">넷플릭스</label>
+                <input type="checkbox" name="service" value="watcha" id="watcha">
+                <label for="watcha">왓챠 플레이</label>
+                </div>
+            </div>
+            <br>
+                <div>
+                장르
+            <div>
+                <input type="checkbox" name="genre" value="action" id="action">
+                <label for="action">액션</label>
+                <input type="checkbox" name="genre" value="fantasy" id="fantasy">
+                <label for="fantasy">판타지</label>
+                <input type="checkbox" name="genre" value="sf" id="sf">
+                <label for="sf">SF</label>
+                <input type="checkbox" name="genre" value="comedy" id="comedy">
+                <label for="comedy">코미디</label>
+                <input type="checkbox" name="genre" value="romance" id="romance">
+                <label for="romance">로맨스</label>
+                <input type="checkbox" name="genre" value="drama" id="drama">
+                <label for="drama">드라마</label>
+                <input type="checkbox" name="genre" value="animation" id="animation">
+                <label for="animation">애니메이션</label>
+                <input type="checkbox" name="genre" value="thriller" id="thrille">
+                <label for="thrille">스릴러</label>
+                <input type="checkbox" name="genre" value="horror" id="horror">
+                <label for="horror">공포</label>
+            </div>
+                </div>
+    
+                <div align="center">
+                <input type="submit" value="검색">
+                </div>
+            </form>
+    </div>
+</div>
+
 <div class="mt-5 mb-5">
     <div class="row">
         {%for m in movies%}
@@ -173,6 +223,29 @@
         bottom: 50px;
         display: none;
     }
+    input[id*="answer_"]{
+        display:none;
+    }
+    input[id*="answer_"]+ label {
+        display:block;
+        padding:10px;
+        border-bottom:0;
+        color:rgb(0, 0, 0);
+        font-weight: 900;
+        cursor:pointer;
+        position:relative;
+    }
+    input[id*="answer_"]+ label + div{
+        max-height: 0;
+        transition:all .355;
+        overflow:hidden;
+        background:#ebf8ff;
+        font-size:15px;
+    }
+    input[id*="answer_"]:checked + label + div{
+        max-height:600px;
+    }
+
 </style>
 
 <script>
