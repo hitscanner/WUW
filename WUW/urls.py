@@ -23,17 +23,18 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',main.views.index,name='index'),
-    path('search/',main.views.search,name='search'),
-    path('detail/<int:movie_id>',main.views.detail,name='detail'),
+    path('', main.views.index, name='index'),
+    path('', main.views.ajax_index, name='ajax_index'),
+    path('search/', main.views.search, name='search'),
+    path('detail/<int:movie_id>', main.views.detail, name='detail'),
     path('ranking/', main.views.ranking, name='ranking'),
     path('tag/', main.views.tag, name='tag'),
-    path('fullcalendar/',fullcalendar.views.fullcalendar,name='fullcalendar'),
+    path('fullcalendar/', fullcalendar.views.fullcalendar, name='fullcalendar'),
     path('cart/<int:user_id>', main.views.cart, name='cart'),
-    
-    path('like/',main.views.like,name='like'), 
-    
-    path('signup/', accounts.views.signup, name = 'signup'),
-    path('login/', accounts.views.login, name = 'login'),
+
+    path('like/', main.views.like, name='like'),
+
+    path('signup/', accounts.views.signup, name='signup'),
+    path('login/', accounts.views.login, name='login'),
     path('logout/', accounts.views.logout, name='logout'),
 ]

@@ -1,103 +1,96 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    {% load staticfiles %}
-    <meta charset='utf-8' />
-    <link href='{%static "daygrid/main.css"%}' rel='stylesheet' />
-    <link href='{%static "core/main.css"%}' rel='stylesheet' />
-    <script src='{%static "core/main.js"%}'></script>
-    <script src='{%static "daygrid/main.js"%}'></script>
-    <script src='{%static "core/locales/ko.js"%}'></script>
 
-  </head>
-  <body>
-    <div id='calendar'></div>
-    <input type="button" value="추가" onclick="add_div()"><br/>
+<head>
+  {% load staticfiles %}
+  <meta charset='utf-8' />
+  <link href='{%static "daygrid/main.css"%}' rel='stylesheet' />
+  <link href='{%static "core/main.css"%}' rel='stylesheet' />
+  <script src='{%static "core/main.js"%}'></script>
+  <script src='{%static "daygrid/main.js"%}'></script>
+  <script src='{%static "core/locales/ko.js"%}'></script>
 
-    <div id="room_type">
+</head>
 
-      <div class="form-group">
+<body>
+  <div id='calendar'></div>
+  <input type="button" value="추가" onclick="add_div()"><br />
 
-        <label for="image">제목</label>
+  <div id="room_type">
 
-        <input type="text" id="title" name="title" class="form-control" ></input>
+    <div class="form-group">
 
-      </div>
+      <label for="image">제목</label>
 
-      <input type="button" value="삭제" onclick="remove_div(this)">
+      <input type="text" id="title" name="title" class="form-control"></input>
 
     </div>
 
-    <div id="field"></div>
+    <input type="button" value="삭제" onclick="remove_div(this)">
+
+  </div>
+
+  <div id="field"></div>
 
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          var calendarEl = document.getElementById('calendar');
-        
-          var calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: [ 'dayGrid' ],
-            locale:"ko",
-            eventClick: function(info) {
-              var eventObj = info.event;
-        
-              if (eventObj.url) {
-                alert(
-                  'Clicked ' + eventObj.title + '.\n' +
-                  'Will open ' + eventObj.url + ' in a new tab'
-                );
-        
-                window.open(eventObj.url);
-        
-                info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
-              } else {
-                alert('Clicked ' + eventObj.title);
-              }
-            },
-            defaultDate: '2019-08-15',
-            events: [
-              {
-                title: 'simple event',
-                start: '2019-08-02'
-              },
-              {
-                title: 'event with URL',
-                url: 'https://www.google.com/',
-                start: '2019-08-03'
-              }
-            ]
-          });
-        
-          calendar.render();
-        });
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
 
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: ['dayGrid'],
+        locale: "ko",
+        eventClick: function (info) {
+          var eventObj = info.event;
 
+          if (eventObj.url) {
+            alert(
+              'Clicked ' + eventObj.title + '.\n' +
+              'Will open ' + eventObj.url + ' in a new tab'
+            );
 
-    </script>
+            window.open(eventObj.url);
 
-<!-- div영역추가! -->
-    <script type="text/javascript">
+            info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
+          } else {
+            alert('Clicked ' + eventObj.title);
+          }
+        },
+        defaultDate: '2019-08-15',
+        events: [
+          {
+            title: 'simple event',
+            start: '2019-08-02'
+          },
+          {
+            title: 'event with URL',
+            url: 'https://www.google.com/',
+            start: '2019-08-03'
+          }
+        ]
+      });
 
-      function add_div(){
-      
-          var div = document.createElement('div');
-      
-      
-      
-          div.innerHTML = document.getElementById('room_type').innerHTML;
-      
-          document.getElementById('field').appendChild(div);
-      
-      }
-      
-      
-      
-      function remove_div(obj){
-      
+      calendar.render();
+    });
+
+  </script>
+
+  <!-- div영역추가! -->
+  <script type="text/javascript">
+
+    function add_div() {
+
+      var div = document.createElement('div');
+
+      div.innerHTML = document.getElementById('room_type').innerHTML;
+
+      document.getElementById('field').appendChild(div);
+    }
+    function remove_div(obj) {
       document.getElementById('field').removeChild(obj.parentNode);
-      
-      }
-      
-      </script>
-  </body>
+    }
+
+  </script>
+</body>
+
 </html>
