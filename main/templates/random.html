@@ -18,7 +18,7 @@
 
 <body>
     <div class="row mt-5">
-        <div class="col-sm-12 col-md-6" align="right">
+        <div class="col-sm-12 col-md-6" align="right" style="margin-right: 3rem">
             <div align="center">
                 <img class="img-fluid" src="{{movie.poster}}" style="height: 70vh;">
             </div>
@@ -35,8 +35,8 @@
                 </button>
             </span>
         </div>
-        <div class="col-sm-12 col-md-6" align="left">
-            <h1>{{movie.name}}</h1>
+        <div class="col-sm-12 col-md-6" align="left" style="margin-left: 2rem">
+            <h2> {{movie.name}}</h2>
             <br>
             {%if movie.netflix == True%}
             <img class="mr-3" style="height:2rem; width:2rem;" src="{%static 'icon/netflix.png'%}">
