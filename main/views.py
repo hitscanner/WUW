@@ -98,7 +98,7 @@ def tag_search(request):
     if 'thriller' in genre_var:
         movie=Movie.objects.filter(thriller=True) 
     if 'horror' in genre_var:
-        movie=Movie.objects.filter(horror= 'True') 
+        movie=Movie.objects.filter(horror= True) 
 
         # ----------------------------------------------------------------------다중선택 안됨
     context={
