@@ -64,10 +64,6 @@ def cart(request,user_id):
 
     return render(request, 'cart.html',context)
 
-def tag(request):
-    
-    return render(request,'tag.html') 
-
 def tag_search(request):
     search_s=request.GET['service']
     # search_g=request.GET['genre']

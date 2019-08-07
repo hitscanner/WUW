@@ -27,7 +27,6 @@ urlpatterns = [
     path('search/',main.views.search,name='search'),
     path('detail/<int:movie_id>',main.views.detail,name='detail'),
     path('ranking/', main.views.ranking, name='ranking'),
-    path('tag/', main.views.tag, name='tag'),
     path('fullcalendar/',fullcalendar.views.fullcalendar,name='fullcalendar'),
     path('cart/<int:user_id>', main.views.cart, name='cart'),
     path('random/',main.views.random, name='random'),
