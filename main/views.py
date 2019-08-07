@@ -74,31 +74,85 @@ def tag_search(request):
     genre_var=request.GET.getlist('genre[]')
 
     if "netflix" in search_s:
-        movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False))
+        # movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False))
+        if 'action' in genre_var: 
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False) & Q(action=True))
+        if 'fantasy' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False) & Q(fantasy=True))
+        if 'sf' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False) & Q(sf=True))
+        if 'comedy' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False) & Q(comedy=True))
+        if 'romance' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False) & Q(romance=True))
+        if 'drama' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False) & Q(drama=True))
+        if 'animation' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False) & Q(animation=True))
+        if 'thriller' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False) & Q(thriller=True))
+        if 'horror' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False) & Q(horror= True))
     elif "watcha" in search_s:
-        movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True))
+        # movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True))
+        if 'action' in genre_var: 
+            movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True) & Q(action=True))
+        if 'fantasy' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True) & Q(fantasy=True))
+        if 'sf' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True) & Q(sf=True))
+        if 'comedy' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True) & Q(comedy=True))
+        if 'romance' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True) & Q(romance=True))
+        if 'drama' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True) & Q(drama=True))
+        if 'animation' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True) & Q(animation=True))
+        if 'thriller' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True) & Q(thriller=True))
+        if 'horror' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True) & Q(horror= True))
     if "netflix" in search_s and "watcha" in search_s:
-        movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = True))
+        # movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = True))
+        if 'action' in genre_var: 
+            movie=Movie.objects.all().filter(Q(netflix =True) & Q(watcha =True) & Q(action=True))
+        if 'fantasy' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix =True) & Q(watcha =True) & Q(fantasy=True))
+        if 'sf' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha =True) & Q(sf=True))
+        if 'comedy' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha =True) & Q(comedy=True))
+        if 'romance' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha =True) & Q(romance=True))
+        if 'drama' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix =True) & Q(watcha =True) & Q(drama=True))
+        if 'animation' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha =True) & Q(animation=True))
+        if 'thriller' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha =True) & Q(thriller=True))
+        if 'horror' in genre_var:
+            movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha =True) & Q(horror= True))
         # -----------------------------------------------------------------------여기까지 됨
-    
-    if 'action' in genre_var: 
-        movie=Movie.objects.filter(action=True)
-    if 'fantasy' in genre_var:
-        movie=Movie.objects.filter(fantasy=True)
-    if 'sf' in genre_var:
-        movie=Movie.objects.filter(sf=True) 
-    if 'comedy' in genre_var:
-        movie=Movie.objects.filter(comedy=True)
-    if 'romance' in genre_var:
-        movie=Movie.objects.filter(romance=True)
-    if 'drama' in genre_var:
-        movie=Movie.objects.filter(drama=True) 
-    if 'animation' in genre_var:
-        movie=Movie.objects.filter(animation=True) 
-    if 'thriller' in genre_var:
-        movie=Movie.objects.filter(thriller=True) 
-    if 'horror' in genre_var:
-        movie=Movie.objects.filter(horror= True) 
+        
+    # if 'action' in genre_var: 
+    #     movie=Movie.objects.filter(action=True)
+    # if 'fantasy' in genre_var:
+    #     movie=Movie.objects.filter(fantasy=True)
+    # if 'sf' in genre_var:
+    #     movie=Movie.objects.filter(sf=True) 
+    # if 'comedy' in genre_var:
+    #     movie=Movie.objects.filter(comedy=True)
+    # if 'romance' in genre_var:
+    #     movie=Movie.objects.filter(romance=True)
+    # if 'drama' in genre_var:
+    #     movie=Movie.objects.filter(drama=True) 
+    # if 'animation' in genre_var:
+    #     movie=Movie.objects.filter(animation=True) 
+    # if 'thriller' in genre_var:
+    #     movie=Movie.objects.filter(thriller=True) 
+    # if 'horror' in genre_var:
+    #     movie=Movie.objects.filter(horror= True) 
 
         # ----------------------------------------------------------------------다중선택 안됨
     context={

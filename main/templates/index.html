@@ -43,38 +43,37 @@
     
     <div class="accordian">
             <input type="radio" name="accordian" id="answer_">
-            <label for="answer_">분류 (장르다중선택안됨)</label>
+            <label for="answer_">분류</label>
             <div><form action="{%url 'tag_search' %}">
                     <div>
                                 스트리밍 서비스
                                 <div>
-                                <input type="checkbox" name="service[]" value="netflix" id="netflix">
+                                <input type="checkbox" name="service[]" value="netflix" id="netflix" >
                                 <label for="netflix">넷플릭스</label>
                                 <input type="checkbox" name="service[]" value="watcha" id="watcha">
                                 <label for="watcha">왓챠 플레이</label>
                                 </div>
                     </div>
-                    <br>
                 <div>
                                 장르
                     <div>
-                                <input type="checkbox" name="genre[]" value="action" id="action">
+                                <input type="radio" name="genre[]" value="action" id="action">
                                 <label for="action">액션</label>
-                                <input type="checkbox" name="genre[]" value="fantasy" id="fantasy">
+                                <input type="radio" name="genre[]" value="fantasy" id="fantasy">
                                 <label for="fantasy">판타지</label>
-                                <input type="checkbox" name="genre[]" value="sf" id="sf">
+                                <input type="radio" name="genre[]" value="sf" id="sf">
                                 <label for="sf">SF</label>
-                                <input type="checkbox" name="genre[]" value="comedy" id="comedy">
+                                <input type="radio" name="genre[]" value="comedy" id="comedy">
                                 <label for="comedy">코미디</label>
-                                <input type="checkbox" name="genre[]" value="romance" id="romance">
+                                <input type="radio" name="genre[]" value="romance" id="romance">
                                 <label for="romance">로맨스</label>
-                                <input type="checkbox" name="genre[]" value="drama" id="drama">
+                                <input type="radio" name="genre[]" value="drama" id="drama">
                                 <label for="drama">드라마</label>
-                                <input type="checkbox" name="genre[]" value="animation" id="animation">
+                                <input type="radio" name="genre[]" value="animation" id="animation">
                                 <label for="animation">애니메이션</label>
-                                <input type="checkbox" name="genre[]" value="thriller" id="thriller">
+                                <input type="radio" name="genre[]" value="thriller" id="thriller">
                                 <label for="thriller">스릴러</label>
-                                <input type="checkbox" name="genre[]" value="horror" id="horror">
+                                <input type="radio" name="genre[]" value="horror" id="horror">
                                 <label for="horror">공포</label>
                     </div>
                         </div>
