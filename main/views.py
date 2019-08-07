@@ -133,27 +133,6 @@ def tag_search(request):
             movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha =True) & Q(thriller=True))
         if 'horror' in genre_var:
             movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha =True) & Q(horror= True))
-        # -----------------------------------------------------------------------여기까지 됨
-        
-    # if 'action' in genre_var: 
-    #     movie=Movie.objects.filter(action=True)
-    # if 'fantasy' in genre_var:
-    #     movie=Movie.objects.filter(fantasy=True)
-    # if 'sf' in genre_var:
-    #     movie=Movie.objects.filter(sf=True) 
-    # if 'comedy' in genre_var:
-    #     movie=Movie.objects.filter(comedy=True)
-    # if 'romance' in genre_var:
-    #     movie=Movie.objects.filter(romance=True)
-    # if 'drama' in genre_var:
-    #     movie=Movie.objects.filter(drama=True) 
-    # if 'animation' in genre_var:
-    #     movie=Movie.objects.filter(animation=True) 
-    # if 'thriller' in genre_var:
-    #     movie=Movie.objects.filter(thriller=True) 
-    # if 'horror' in genre_var:
-    #     movie=Movie.objects.filter(horror= True) 
-
         # ----------------------------------------------------------------------다중선택 안됨
     context={
         "movie":movie
