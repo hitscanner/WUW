@@ -76,9 +76,28 @@ def tag_search(request):
         movie=Movie.objects.all().filter(Q(netflix = 'True') & Q(watcha = 'False'))
     elif search_s=="watcha":
         movie=Movie.objects.all().filter(Q(netflix = 'False') & Q(watcha ='True'))
-    else:
+    elif search_s=="netflix" and search_s=="watcha":
         movie=Movie.objects.all().filter(Q(netflix = 'True') & Q(watcha = 'True'))
-
+    
+    if search_g=="action":
+        movie=Movie.objects.filter(action= 'True')
+    elif search_g=="fantasy":
+        movie=Movie.objects.filter(fantasy= 'True')
+    elif search_g=="sf":
+        movie=Movie.objects.filter(sf= 'True') 
+    elif search_g=="comdey":
+        movie=Movie.objects.filter(comedy= 'True')
+    elif search_g=="romance":
+        movie=Movie.objects.filter(romance= 'True')
+    elif search_g=="drama":
+        movie=Movie.objects.filter(drama= 'True') 
+    elif search_g=="animation":
+        movie=Movie.objects.filter(animation= 'True') 
+    elif search_g=="thriller":
+        movie=Movie.objects.filter(thriller= 'True') 
+    elif search_g=="horror":
+        movie=Movie.objects.filter(horror= 'True') 
+        
     context={
         "movie":movie
     }
