@@ -69,35 +69,36 @@ def tag(request):
     return render(request,'tag.html') 
 
 def tag_search(request):
-    search_s=request.GET['service']
+    search_s=request.GET.getlist('service[]')
     # search_g=request.GET['genre']
     genre_var=request.GET.getlist('genre[]')
 
-    if search_s=="netflix":
-        movie=Movie.objects.all().filter(Q(netflix = 'True') & Q(watcha = 'False'))
-    elif search_s=="watcha":
-        movie=Movie.objects.all().filter(Q(netflix = 'False') & Q(watcha ='True'))
-    elif search_s=="netflix" and search_s=="watcha":
-        movie=Movie.objects.all().filter(Q(netflix = 'True') & Q(watcha = 'True'))
+    if "netflix" in search_s:
+        movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False))
+    elif "watcha" in search_s:
+        movie=Movie.objects.all().filter(Q(netflix = False) & Q(watcha =True))
+    if "netflix" in search_s and "watcha" in search_s:
+        movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = True))
+        # -----------------------------------------------------------------------여기까지 됨
     
-        if '1' in genre_var: 
-            movie=Movie.objects.filter(action= 'True')
-        if '2' in genre_var:
-            movie=Movie.objects.filter(fantasy= 'True')
-        if '3' in genre_var:
-            movie=Movie.objects.filter(sf= 'True') 
-        if '4' in genre_var:
-            movie=Movie.objects.filter(comedy= 'True')
-        if '5' in genre_var:
-            movie=Movie.objects.filter(romance= 'True')
-        if '6' in genre_var:
-            movie=Movie.objects.filter(drama= 'True') 
-        if '7' in genre_var:
-            movie=Movie.objects.filter(animation= 'True') 
-        if '8' in genre_var:
-            movie=Movie.objects.filter(thriller= 'True') 
-        if '9' in genre_var:
-            movie=Movie.objects.filter(horror= 'True') 
+    if '1' in genre_var: 
+        movie=Movie.objects.filter(action= 'True')
+    if '2' in genre_var:
+        movie=Movie.objects.filter(fantasy= 'True')
+    if '3' in genre_var:
+        movie=Movie.objects.filter(sf= 'True') 
+    if '4' in genre_var:
+        movie=Movie.objects.filter(comedy= 'True')
+    if '5' in genre_var:
+        movie=Movie.objects.filter(romance= 'True')
+    if '6' in genre_var:
+        movie=Movie.objects.filter(drama= 'True') 
+    if '7' in genre_var:
+        movie=Movie.objects.filter(animation= 'True') 
+    if '8' in genre_var:
+        movie=Movie.objects.filter(thriller= 'True') 
+    if '9' in genre_var:
+        movie=Movie.objects.filter(horror= 'True') 
         
     context={
         "movie":movie
