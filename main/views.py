@@ -134,8 +134,9 @@ def tag_search(request):
         if 'horror' in genre_var:
             movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha =True) & Q(horror= True))
 
+        # list=['action','fantasy','sf','comedy','romance','drama','animation','thriller','horror']
         # for i in genre_var:
-        #     if genre_var[i] in genre_var:
+        #     if list[i] in genre_var:
         #         movie=Movie.objects.all().filter(Q(netflix =True) & Q(watcha =True) & Q(genre_var[i]=True))
 
         # ----------------------------------------------------------------------다중선택 안됨
