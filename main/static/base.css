@@ -12,6 +12,24 @@
     font-family: 'S-CoreDream-3Light', sans-serif;
 }
 
+span.top {
+    position: fixed;
+    left: 90%;
+    bottom: 50px;
+    display: none;
+    margin: auto;
+}
+
+@media ( max-width: 480px ){
+span.top {
+    position: fixed;
+    left: 80%;
+    bottom: 50px;
+    display: none;
+    margin: auto;
+}
+}
+
 .nav-text {
     font-weight: bold;
 }
