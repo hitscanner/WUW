@@ -88,7 +88,7 @@ input[id*="answer_"]+label+div {
     max-height: 0;
     transition: all .355;
     overflow: hidden;
-    background: #ebf8ff;
+    background: red;
     font-size: 15px;
 }
 
