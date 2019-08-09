@@ -97,7 +97,7 @@ input[id*="answer_"]:checked+label+div {
 }
 
 
-input[id*="close_"] {
+/* input[id*="close_"] {
     display: none;
 }
 
@@ -117,4 +117,4 @@ input[id*="close_"]+label+div {
 
 input[id*="close_"]:checked+label+div {
     max-height: 10px;
-}
+} */
