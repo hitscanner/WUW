@@ -26,21 +26,15 @@
     </form>
 </div>
 <div align="center">
-    <!-- <button class="btn-1"><ahref="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);">태그</ahref="{%url></button> -->
-    <!-- <button class="btn-1">
-            <a href="{%url 'tag'%}" style="text-decoration:none; color:rgb(70, 69, 69);"
-                onclick="window.open(this.href, '_blank', 'width=550px,height=200px,top=420,left=400,toolbars=no,scrollbars=no'); return false;">
-                분류</a></button> -->
     <button class="btn-1"><a href="{%url 'ranking'%}"
             style="text-decoration:none; color:rgb(70, 69, 69);">인기순위</a></button>
-    <!-- <button class="btn-1"><a href="{%url 'detail' 0%}" style="text-decoration:none; color:rgb(70, 69, 69);">랜덤</a></button> -->
     <button class="btn-1" onclick="split()">
         <span style="text-decoration:none; color:rgb(70, 69, 69);">분류</span> </button>
     <button class="btn-1">
         <a href="{%url 'random'%}" style="text-decoration:none; color:rgb(70, 69, 69);"
             onclick="window.open(this.href, '_blank', 'width=800,height=550,top=100,left=300,toolbars=no,scrollbars=no'); return false;">
             랜덤</a></button>
-    <div id="split" class="">
+    <div id="split" style="display: none;">
         <div>
             <br>
             스트리밍 서비스
@@ -66,8 +60,7 @@
                 <label for="romance">로맨스</label>
                 <input type="radio" name="genre[]" value="drama" id="drama" onclick="category_select(this.id)">
                 <label for="drama">드라마</label>
-                <input type="radio" name="genre[]" value="animation" id="animation"
-                    onclick="category_select(this.id)">
+                <input type="radio" name="genre[]" value="animation" id="animation" onclick="category_select(this.id)">
                 <label for="animation">애니메이션</label>
                 <input type="radio" name="genre[]" value="thriller" id="thriller" onclick="category_select(this.id)">
                 <label for="thriller">스릴러</label>
@@ -77,19 +70,7 @@
         </div>
 
 
-        <!-- 슬라이드 -->
-        <!-- <div>
-            <p>
-                <label for="amount">년도</label>
-                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            </p>
-            <div id="slider-range"></div>
-        </div> -->
     </div>
-    <!-- <input type="radio" name="accordian" id="close_">
-            <label for="close_" style="font-size: 1px;" >닫기</label>
-            <div></div>
-        </div> -->
 </div>
 <div class="mt-5 mb-5" id="list">
     <div class="row">
