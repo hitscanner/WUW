@@ -4,6 +4,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 * {
     font-family: 'WONDotum', sans-serif;
 }
@@ -12,6 +13,7 @@
     font-family: 'S-CoreDream-3Light', sans-serif;
 }
 
+/* Top 버튼 */
 span.top {
     position: fixed;
     left: 90%;
@@ -30,10 +32,12 @@ span.top {
 }
 }
 
+/* 네비게이션바 */
 .nav-text {
     font-weight: bold;
 }
 
+/* 즐겨찾기 */
 .sticky-social-bar {
     padding: 0;
     margin: 0;
