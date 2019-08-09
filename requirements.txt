@@ -11,6 +11,7 @@ Django==2.2.3
 django-scheduler==0.8.8
 django-tagging==0.4.6
 et-xmlfile==1.0.1
+gunicorn==19.9.0
 icalendar==4.0.3
 idna==2.8
 jdcal==1.4.1
@@ -18,6 +19,7 @@ lxml==4.4.0
 odfpy==1.4.0
 openpyxl==2.6.2
 psycopg2==2.8.3
+psycopg2-binary==2.8.3
 python-dateutil==2.8.0
 pytz==2019.1
 PyYAML==5.1.2
