@@ -18,7 +18,10 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     
-    
+    <link rel="stylesheet" href="/resources/demos/style.css">
+  
+
+
     <link href="{%static 'index.css'%}" rel="stylesheet">
     <link href="{%static 'base.css'%}" rel="stylesheet">
 
@@ -137,5 +140,23 @@
     }
     function showPopup() { window.open("{%url 'fullcalendar'%}", "a", "width=600, height=530, left=100, top=50"); }
 </script> 
+
+
+<!-- 슬라이드 -->
+<script>
+    $( function() {
+      $( "#slider-range" ).slider({
+        range: true,
+        min: 1996,
+        max: 2019,
+        values: [ 2000, 2002 ],
+        slide: function( event, ui ) {
+          $( "#amount" ).val( ui.values[ 0 ] + "년" + " - " + ui.values[ 1 ] + "년");
+        }
+      });
+      $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + "년"+
+        " - " + $( "#slider-range" ).slider( "values", 1 ) + "년");
+    } );
+    </script>
 
 </html>
