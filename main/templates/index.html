@@ -40,54 +40,48 @@
         <a href="{%url 'random'%}" style="text-decoration:none; color:rgb(70, 69, 69);"
             onclick="window.open(this.href, '_blank', 'width=800,height=550,top=100,left=300,toolbars=no,scrollbars=no'); return false;">
             랜덤</a></button>
-
-    <div id="split" class="accordian" style="display:none;">
-        <form action="{%url 'tag_search' %}">
+    <div id="split" class="">
+        <div>
+            <br>
+            스트리밍 서비스
             <div>
-                스트리밍 서비스!
-                <div>
-                    <input type="checkbox" name="service[]" value="netflix" id="netflix">
-                    <label for="netflix">넷플릭스</label>
-                    <input type="checkbox" name="service[]" value="watcha" id="watcha">
-                    <label for="watcha">왓챠 플레이</label>
-                </div>
+                <input type="checkbox" name="service[]" value="netflix" id="netflix" onclick="category_select(this.id)">
+                <label for="netflix">넷플릭스</label>
+                <input type="checkbox" name="service[]" value="watcha" id="watcha" onclick="category_select(this.id)">
+                <label for="watcha">왓챠 플레이</label>
             </div>
-            <div>
-                장르
-                <div>
-                    <input type="radio" name="genre[]" value="action" id="action">
-                    <label for="action">액션</label>
-                    <input type="radio" name="genre[]" value="fantasy" id="fantasy">
-                    <label for="fantasy">판타지</label>
-                    <input type="radio" name="genre[]" value="sf" id="sf">
-                    <label for="sf">SF</label>
-                    <input type="radio" name="genre[]" value="comedy" id="comedy">
-                    <label for="comedy">코미디</label>
-                    <input type="radio" name="genre[]" value="romance" id="romance">
-                    <label for="romance">로맨스</label>
-                    <input type="radio" name="genre[]" value="drama" id="drama">
-                    <label for="drama">드라마</label>
-                    <input type="radio" name="genre[]" value="animation" id="animation">
-                    <label for="animation">애니메이션</label>
-                    <input type="radio" name="genre[]" value="thriller" id="thriller">
-                    <label for="thriller">스릴러</label>
-                    <input type="radio" name="genre[]" value="horror" id="horror">
-                    <label for="horror">공포</label>
-                </div>
+        </div>
+        <div>
+            장르
+            <div class="custom-control custom-checkbox">
+                <input type="radio" name="genre[]" value="action" id="action" onclick="category_select(this.id)">
+                <label for="action">액션</label>
+                <input type="radio" name="genre[]" value="fantasy" id="fantasy" onclick="category_select(this.id)">
+                <label for="fantasy">판타지</label>
+                <input type="radio" name="genre[]" value="sf" id="sf" onclick="category_select(this.id)">
+                <label for="sf">SF</label>
+                <input type="radio" name="genre[]" value="comedy" id="comedy" onclick="category_select(this.id)">
+                <label for="comedy">코미디</label>
+                <input type="radio" name="genre[]" value="romance" id="romance" onclick="category_select(this.id)">
+                <label for="romance">로맨스</label>
+                <input type="radio" name="genre[]" value="drama" id="drama" onclick="category_select(this.id)">
+                <label for="drama">드라마</label>
+                <input type="radio" name="genre[]" value="animation" id="animation"
+                    onclick="category_select(this.id)">
+                <label for="animation">애니메이션</label>
+                <input type="radio" name="genre[]" value="thriller" id="thriller" onclick="category_select(this.id)">
+                <label for="thriller">스릴러</label>
+                <input type="radio" name="genre[]" value="horror" id="horror" onclick="category_select(this.id)">
+                <label for="horror">공포</label>
             </div>
-
-            <div align="center">
-                <input type="submit" value="검색">
-            </div>
-        </form>
+        </div>
     </div>
     <!-- <input type="radio" name="accordian" id="close_">
             <label for="close_" style="font-size: 1px;" >닫기</label>
             <div></div>
         </div> -->
 </div>
-
-<div class="mt-5 mb-5">
+<div class="mt-5 mb-5" id="list">
     <div class="row">
         {%for m in movies%}
         <div class="col-sm-12 col-md-4 mb-5">
@@ -134,9 +128,34 @@
         <input type="hidden" id="page" value="2">
     </div>
 </div>
-</div>
 
 <script>
+    var category_list = new Array();
+    var all_select;
+    function category_select(id) {
+        var state = $('#' + id).prop('checked');
+        if (state == true) {
+            category_list.push(id);
+        }
+        else {
+            var index = category_list.indexOf(id);
+            category_list.splice(index, 1);
+        }
+        if (category_list == 0) {
+            all_select = true;
+        }
+        else {
+            all_select = false;
+        }
+        $.ajax({
+            url: "{%url 'select'%}",
+            data: { 'category_list': category_list, "all_select": all_select },
+            success: function (response) {
+                $('#list').html(response)
+            }
+        })
+    }
+
     function split() {
         if ($('#split').css("display") == "none") {
             $('#split').show()
@@ -213,8 +232,8 @@
     });
 </script>
 <style>
-        .btn-1:focus{
-            outline: 0;
-        }
+    .btn-1:focus {
+        outline: 0;
+    }
 </style>
 {%endblock%}

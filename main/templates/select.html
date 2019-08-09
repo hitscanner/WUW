@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<div class="row">
+    {%for m in movie%}
+    <div class="col-sm-12 col-md-4 mb-5">
+        <div class="card ">
+            <div class="card-body p-2" style="height:2.5em;">
+                <button class="like-btn" id="{{m.id}}" onclick="like(this.id)">
+                    {%if user.is_authenticated%}
+                    {%if request.user in m.like_user_set.all %}
+                    <!-- 로그인 한 유저가 좋아요를 누른 유저일때  -->
+                    <i id="heart_{{m.id}}" class="fas fa-heart heart"></i>
+                    <!-- <i id="hearts_{{m.id}}" class="fas fa-star"></i> -->
+                    {%else%}
+                    <!-- 로그인 한 유저가 좋아요를 누른 유저가 아닐 때  -->
+                    <i id="heart_{{m.id}}" class="far fa-heart heart"></i>
+                    <!-- <i id="heart_{{m.id}}" class="far fa-star" style="color: rgb(253, 207, 0);"></i> -->
+                    {%endif%}
+                    {%endif%}
+                </button>
+            </div>
+            <div style="transform: rotate(0);">
+                <a href="{%url 'detail' m.id%}" class="stretched-link">
+                    {%if m.poster%}
+                    <img src="{{m.poster}}" class="card-img-top" alt="{{m.name}}">
+                    {%elif m.poster == ''%}
+                    <img src="{%static 'default_img.jpg'%}" class="card-img-top" alt="{{m.name}}">
+                    {%endif%}
+                </a>
+                <div class="p-2 card-body">
+                    <div align="center" style="height:2rem;">
+                        {%if m.netflix == True%}
+                        <img class="mr-3" style="width:2rem;" src="{%static 'icon/netflix.png'%}">
+                        {%endif%}
+                        {%if m.watcha == True%}
+                        <img style="width:2rem;" src="{%static 'icon/watcha.png'%}">
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>

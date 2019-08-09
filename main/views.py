@@ -14,7 +14,7 @@ from django.db.models import Q
 def index(request):
     if request.is_ajax():
         movies = Movie.objects.all()
-        paginator = Paginator(movies, 24)
+        paginator = Paginator(movies, 12)
         page = request.GET.get('page')
         # movies = paginator.get_page(page)
         try:
@@ -31,7 +31,7 @@ def index(request):
         return render(request, 'ajax_index.html', context)
     else:
         movie=Movie.objects.all()
-        paginator = Paginator(movie,24) 
+        paginator = Paginator(movie,12) 
         page = request.GET.get('page')
         movies = paginator.get_page(page)
         last_page =  paginator.num_pages
@@ -90,11 +90,30 @@ def tag(request):
     
     return render(request,'tag.html') 
 
-def tag_search(request):
-    search_s=request.GET.getlist('service[]')
-    # search_g=request.GET['genre']
-    genre_var=request.GET.getlist('genre[]')
+def select(request):
+    if request.is_ajax():
+        category_list = request.GET.getlist('category_list[]')
+        all_select = request.GET['all_select']
+        if all_select == "true":
+            movie=Movie.objects.all()
+            paginator = Paginator(movie,12) 
+            page = request.GET.get('page')
+            movie = paginator.get_page(page)
+        else:
+            for category in category_list:
+                movie = Movie.objects.filter(**{category: True})
+        
+        context= {
+            "movie":movie,
+            "all_select":all_select,
+            "category_list":category_list,
+        }
+        return render(request,'select.html',context)
 
+    #search_s=request.GET.getlist('service[]')
+    # search_g=request.GET['genre']
+    #genre_var=request.GET.getlist('genre[]')
+    '''
     if "netflix" in search_s:
         # movie=Movie.objects.all().filter(Q(netflix = True) & Q(watcha = False))
         if 'action' in genre_var: 
@@ -162,10 +181,8 @@ def tag_search(request):
         #         movie=Movie.objects.all().filter(Q(netflix =True) & Q(watcha =True) & Q(genre_var[i]=True))
 
         # ----------------------------------------------------------------------다중선택 안됨
-    context={
-        "movie":movie
-    }
-    return render(request,'tag_search.html',context)
+    '''
+    
 
 def random(request):
     movie=Movie.objects.order_by('?')[0]
