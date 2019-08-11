@@ -147,8 +147,9 @@
       defaultDate: '2019-08-12',
 
       eventRender: function(info) {
-        info.el.querySelector('.fc-title').innerHTML = "<i>" + info.event.title + "</i>";
+        info.el.querySelector('.fc-title').innerHTML = "<img src='" + info.event.title + "' align='center' width='40' height='40'></img>";
 
+        
         var tooltip = new Tooltip(info.el, {
           title: info.event.extendedProps.description,
           placement: 'top',
@@ -159,19 +160,19 @@
   
       events: [
         {
-          title: 'N 더 패밀리 신이 내린 권력 The Family',
+          title: '{%static 'icon/netflix.png'%}',
           start: '2019-08-10'
         },
         {
-          title: 'N 오행자객 五行刺客,',
+          title: '{%static 'icon/watcha.png'%}',
           start: '2019-08-08'
         },
         {
-          title: 'W 트와일라잇',
+          title: '{%static 'icon/netflix.png'%}',
           start: '2019-08-03'
         },
         {
-          title: 'W 뉴문',
+          title: '{%static 'icon/naver.png'%}',
           start: '2019-08-03'
         },
       ]
