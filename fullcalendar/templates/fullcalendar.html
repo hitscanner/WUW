@@ -147,7 +147,7 @@
       defaultDate: '2019-08-12',
 
       eventRender: function(info) {
-        info.el.querySelector('.fc-title').innerHTML = "<img src='" + info.event.title + "' align='center' width='40' height='40'></img>";
+        info.el.querySelector('.fc-title').innerHTML = "<center><img src='" + info.event.title + "' width='30' height='30'></img></center>";
 
         
         var tooltip = new Tooltip(info.el, {
